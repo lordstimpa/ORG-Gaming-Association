@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { AiOutlineDown } from "react-icons/ai"
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Body = styled.div`
     width: 100%;
     display: flex;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    border-bottom: 1px solid #d88200;
-    background: rgba(0,0,0,0.85);
 
-    & .Name {
-        width: 25%;
+    & .NameContainer {
+        width: 400px;
         padding: 1em;
         display: flex;
         flex-direction: column;
@@ -32,18 +31,18 @@ const Body = styled.div`
         }
     }
 
-    & .Links {
+    & .LinksContainer {
         width: fit-content;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        font-weight: 400;
+        font-weight: 700;
 
         & .Link {
             color: #fff;
             padding: 1em;
-            transition: all 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
 
             & .Arrow {
                 vertical-align: middle;
@@ -62,7 +61,8 @@ const Body = styled.div`
         }
 
         & .DropContent {
-            display: none;
+            visibility: hidden;
+            display: flex;
             flex-direction: column;
             position: absolute;
             min-width: 200px;
@@ -71,12 +71,16 @@ const Body = styled.div`
             margin-left: 1em;
             background: #000;
             border: 1px solid #d88200;
+            border-radius: 0.5em;
+            z-index: 9999;
 
             & .DropLink {
                 color: #fff;
                 text-decoration: none;
                 padding: 0.5em 1em;
                 display: block;
+                border-radius: 1em;
+                border: 2px solid #000;
 
                 :hover {
                     color: #d88200;
@@ -84,8 +88,28 @@ const Body = styled.div`
             }
         }
 
-        & .DropLinkContainer:hover .DropContent {
-            display: flex;
+        & .DropLinkContainer:hover .DropContent, .DropLinkContainer:active .DropContent {
+            visibility: visible;
+        }
+    }
+
+    & .BurgerContainer {
+        display: none;
+        align-items: center;
+        padding: 1em;
+
+        & .HamburgerIcon {
+            padding: 0.3em;
+            color: #fff;
+            border: 2px solid #d88200;
+            border-radius: 50%;
+            font-size: 2em;
+            transition: color 0.2s ease-in-out;
+
+            :hover {
+                cursor: pointer;    
+                color: #d88200;
+            }
         }
     }
 
@@ -94,8 +118,26 @@ const Body = styled.div`
     }
 
     @media only screen and (max-width: 1150px) {
-        .Top {
-            background: red;
+        justify-content: space-between;
+
+        .NameContainer {
+            width: 200px;
+
+            & .Org {
+                font-size: 3em;
+            }
+
+            & p {
+                display: none;
+            }
+        }
+
+        .BurgerContainer {
+            display: flex;
+        }
+
+        .LinksContainer {
+            display: none;
         }
     }
 `;
@@ -103,16 +145,32 @@ const Body = styled.div`
 const Nav = () => {
     return ( 
         <Body>
-            <div className="Name">
+
+            <div className="NameContainer">
                 <Link to="/" className="Org">ORG</Link>
                 <p>Original Pros Gaming</p>
             </div>
-            <div className="Links">
+
+            <div className="BurgerContainer">
+                <GiHamburgerMenu className="HamburgerIcon" />
+            </div>
+
+            <div className="LinksContainer">
                 <div className="DropLinkContainer">
-                    <Link to="/" className="Link">Om oss <AiOutlineDown className="Arrow" /></Link>
+                    <Link to="/" className="Link">Medlemskap <AiOutlineDown className="Arrow" /></Link>
+                    <div className="DropContent">
+                        <Link to="/" className="DropLink">Information</Link>
+                        <Link to="/" className="DropLink">Bli medlem!</Link>
+                    </div>
+                </div>
+                <div className="DropLinkContainer">
+                    <Link to="/" className="Link">Om ORG <AiOutlineDown className="Arrow" /></Link>
                     <div className="DropContent">
                         <Link to="/" className="DropLink">Historia</Link>
                         <Link to="/" className="DropLink">Vår vision</Link>
+                        <Link to="/" className="DropLink">Styrelse</Link>
+                        <Link to="/" className="DropLink">Stadgar</Link>
+                        <Link to="/" className="DropLink">Årsredovisningar</Link>
                     </div>
                 </div>
                 <div className="DropLinkContainer">
@@ -130,17 +188,9 @@ const Nav = () => {
                     </div>
                 </div>
                 <Link to="/" className="Link">Community</Link>
-                <div className="DropLinkContainer">
-                    <Link to="/" className="Link">Spelförening <AiOutlineDown className="Arrow" /></Link>
-                    <div className="DropContent">
-                        <Link to="/" className="DropLink">Styrelse</Link>
-                        <Link to="/" className="DropLink">Stadgar</Link>
-                        <Link to="/" className="DropLink">Årsredovisningar</Link>
-                    </div>
-                </div>
-                <Link to="/" className="Link">Medlemskap</Link>
                 <Link to="/" className="Link">Kontakt</Link>
             </div>
+
         </Body>
      );
 }
