@@ -1,13 +1,19 @@
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { AiOutlineDown } from "react-icons/ai"
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Body = styled.div`
+    position: fixed;
     width: 100%;
-    height: 15vh;
+    height: ${props => (props.isScrolled ? '60px' : '100px')};
     display: flex;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    background: ${props => (props.isScrolled ? 'rgb(0, 0, 0)' : 'none')};
+    transition: background-color 0.3s ease;
+    z-index: 999;
+    transition: height 0.2s ease;
 
     & .NameContainer {
         width: 400px;
@@ -27,6 +33,7 @@ const Body = styled.div`
         }
 
         & p {
+            display: ${props => (props.isScrolled ? 'none' : 'block')};
             color: #fff;
             font-weight: 300;
         }
@@ -70,7 +77,7 @@ const Body = styled.div`
             padding: 0.5em;
             margin-top: 1em;
             margin-left: 1em;
-            backdrop-filter: blur(50px);
+            backdrop-filter: blur(50px);    
             border: 1px solid #d88200;
             border-radius: 0.5em;
             z-index: 9999;
@@ -143,8 +150,29 @@ const Body = styled.div`
 `;
 
 const Nav = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        const threshold = 50; 
+  
+        if (scrollPosition >= threshold) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+
     return ( 
-        <Body>
+        <Body isScrolled={isScrolled}>
 
             <div className="NameContainer">
                 <Link to="/" className="Org">ORG</Link>
