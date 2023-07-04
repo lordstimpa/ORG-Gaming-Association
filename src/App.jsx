@@ -1,7 +1,8 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import styled from "styled-components"
-import Hero from "./Hero"
 import Nav from "./Nav"
+import Hero from "./Hero"
+import About from "./About"
 import Soldier from "./assets/gamer.jpg";
 
 const Body = styled.div`
@@ -19,7 +20,10 @@ function App() {
       <Nav />
         <Routes>
           <Route exact path="/" element={
+            <div>
             <Hero />
+            <About />
+            </div>
           } 
           />
         </Routes>

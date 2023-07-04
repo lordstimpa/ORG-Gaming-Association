@@ -2,16 +2,17 @@ import styled from "styled-components";
 
 const Body = styled.div`
     width: 100%;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 8em;
 
     & .InfoCont {
         border-radius: 2em;
         backdrop-filter: blur(50px);
         background: rgba(0,0,0,0.4);
         padding: 1.5em;
+        margin-bottom: 5em;
     }
 
     & .Title {

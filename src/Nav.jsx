@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const Body = styled.div`
     width: 100%;
+    height: 15vh;
     display: flex;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
 
@@ -69,7 +70,7 @@ const Body = styled.div`
             padding: 0.5em;
             margin-top: 1em;
             margin-left: 1em;
-            background: #000;
+            backdrop-filter: blur(50px);
             border: 1px solid #d88200;
             border-radius: 0.5em;
             z-index: 9999;
@@ -80,7 +81,6 @@ const Body = styled.div`
                 padding: 0.5em 1em;
                 display: block;
                 border-radius: 1em;
-                border: 2px solid #000;
 
                 :hover {
                     color: #d88200;
@@ -121,7 +121,7 @@ const Body = styled.div`
         justify-content: space-between;
 
         .NameContainer {
-            width: 200px;
+            width: 150px;
 
             & .Org {
                 font-size: 3em;
