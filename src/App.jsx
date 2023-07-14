@@ -1,35 +1,33 @@
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
-import styled from "styled-components"
-import Nav from "./Nav"
-import Hero from "./Hero"
-import About from "./About"
-import Soldier from "./assets/gamer.jpg";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import Nav from "./components/Nav";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Footer from "./components/Footer";
 
-const Body = styled.div`
-  background-image: url(${props => props.image});
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-`;
+const Body = styled.div``;
 
 function App() {
   return (
-    <Body image={Soldier}>
+    <Body>
       <Router>
-      <Nav />
+        <Nav />
         <Routes>
-          <Route exact path="/" element={
-            <div>
-            <Hero />
-            <About />
-            </div>
-          } 
+          <Route
+            exact
+            path="/"
+            element={
+              <div>
+                <Hero />
+                <About />
+              </div>
+            }
           />
         </Routes>
+        <Footer />
       </Router>
     </Body>
-  )
+  );
 }
 
-export default App
+export default App;
