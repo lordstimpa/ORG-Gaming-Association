@@ -3,44 +3,56 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineDown } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Org from "../assets/org.png";
+import NavMobile from "./NavMobile";
 
 const Body = styled.div`
   position: fixed;
   width: 100%;
-  height: ${(props) => (props.isScrolled ? "60px" : "100px")};
-  display: flex;
+  height: 65px;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
-  background: ${(props) => (props.isScrolled ? "rgb(0, 0, 0)" : "none")};
-  transition: background-color 0.3s ease;
-  z-index: 999;
-  transition: 0.3s ease-in-out;
+  background: ${(props) =>
+    props.isScrolled || props.isClicked ? "rgb(0, 0, 0)" : "none"};
+  z-index: 2;
 
-  & .NameContainer {
-    width: 400px;
-    padding: 1em;
+  /* ORG logo and hamburger menu shown in the navbar */
+  & .First {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 1;
 
-    & .Org {
-      font-family: "Orbitron", Arial, Helvetica, sans-serif;
-      font-size: 2.5em;
-      font-weight: 700;
-      text-decoration: none;
-      color: #d88200;
-      width: fit-content;
-    }
+    & .NameContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-left: 5rem;
 
-    & p {
-      display: ${(props) => (props.isScrolled ? "none" : "block")};
-      color: #fff;
-      font-weight: 300;
+      & .Org {
+        z-index: 1;
+        & img {
+          width: ${(props) =>
+            props.isScrolled || props.isClicked ? "80px" : "200px"};
+          margin-top: ${(props) =>
+            props.isScrolled || props.isClicked ? "1.5rem" : "10rem"};
+          clip-path: ${(props) =>
+            props.isScrolled || props.isClicked
+              ? "inset(0 0 1.3rem 0)"
+              : "inset(0 0 0 0)"};
+        }
+      }
     }
   }
 
+  & .Second {
+    z-index: 2;
+  }
+
+  /* Links shown in the navbar */
   & .LinksContainer {
-    width: fit-content;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -57,7 +69,7 @@ const Body = styled.div`
       }
 
       :hover {
-        color: #d88200;
+        color: #ef6262;
       }
     }
 
@@ -79,7 +91,7 @@ const Body = styled.div`
       margin-left: 1em;
       backdrop-filter: blur(50px);
       background: rgba(0, 0, 0, 0.5);
-      border: 1px solid #d88200;
+      border: 1px solid #ef6262;
       border-radius: 0.5em;
       z-index: 9999;
 
@@ -91,7 +103,7 @@ const Body = styled.div`
         border-radius: 1em;
 
         :hover {
-          color: #d88200;
+          color: #ef6262;
         }
       }
     }
@@ -110,7 +122,7 @@ const Body = styled.div`
     & .HamburgerIcon {
       padding: 0.3em;
       color: #000;
-      background: #d88200;
+      background: #ef6262;
       border-radius: 50%;
       font-size: 2em;
       transition: color 0.2s ease-in-out;
@@ -127,32 +139,40 @@ const Body = styled.div`
   }
 
   @media only screen and (max-width: 1170px) {
-    justify-content: space-between;
-
-    .NameContainer {
-      width: 150px;
-
-      & .Org {
-        font-size: 3em;
+    .First {
+      .NameContainer {
+        margin-left: 1rem;
       }
 
-      & p {
+      .BurgerContainer {
+        display: flex;
+      }
+
+      .LinksContainer {
         display: none;
       }
     }
 
-    .BurgerContainer {
-      display: flex;
-    }
-
-    .LinksContainer {
-      display: none;
+    @media only screen and (max-width: 800px) {
+      .First {
+        .NameContainer {
+          & .Org {
+            & img {
+              width: ${(props) =>
+                props.isScrolled || props.isClicked ? "80px" : "100px"};
+              margin-top: ${(props) =>
+                props.isScrolled || props.isClicked ? "1.5rem" : "3rem"};
+            }
+          }
+        }
+      }
     }
   }
 `;
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -173,88 +193,95 @@ const Nav = () => {
     };
   }, []);
 
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
+
   return (
-    <Body isScrolled={isScrolled}>
-      <div className="NameContainer">
-        <Link to="/" className="Org">
-          ORG
-        </Link>
-        <p>Original Pros Spelförening</p>
+    <Body isScrolled={isScrolled} isClicked={isClicked}>
+      <div className="First">
+        <div className="NameContainer">
+          <Link to="/" className="Org">
+            <img src={Org}></img>
+          </Link>
+        </div>
+
+        <div className="BurgerContainer" onClick={handleClick}>
+          <GiHamburgerMenu className="HamburgerIcon" />
+        </div>
+
+        <div className="LinksContainer">
+          <div className="DropLinkContainer">
+            <Link to="/" className="Link">
+              Medlemskap <AiOutlineDown className="Arrow" />
+            </Link>
+            <div className="DropContent">
+              <Link to="/" className="DropLink">
+                Information
+              </Link>
+              <Link to="/" className="DropLink">
+                Bli medlem!
+              </Link>
+            </div>
+          </div>
+          <div className="DropLinkContainer">
+            <Link to="/" className="Link">
+              Om ORG <AiOutlineDown className="Arrow" />
+            </Link>
+            <div className="DropContent">
+              <Link to="/" className="DropLink">
+                Historia
+              </Link>
+              <Link to="/" className="DropLink">
+                Vår vision
+              </Link>
+              <Link to="/" className="DropLink">
+                Styrelse
+              </Link>
+              <Link to="/" className="DropLink">
+                Stadgar
+              </Link>
+              <Link to="/" className="DropLink">
+                Årsredovisningar
+              </Link>
+            </div>
+          </div>
+          <div className="DropLinkContainer">
+            <Link to="/" className="Link">
+              Gaming <AiOutlineDown className="Arrow" />
+            </Link>
+            <div className="DropContent">
+              <Link to="/" className="DropLink">
+                Counter Strike
+              </Link>
+              <Link to="/" className="DropLink">
+                Rocket League
+              </Link>
+            </div>
+          </div>
+          <div className="DropLinkContainer">
+            <Link to="/" className="Link">
+              Event <AiOutlineDown className="Arrow" />
+            </Link>
+            <div className="DropContent">
+              <Link to="/" className="DropLink">
+                Kommande event
+              </Link>
+              <Link to="/" className="DropLink">
+                Tidigare event
+              </Link>
+            </div>
+          </div>
+          <Link to="/" className="Link">
+            Gemenskap
+          </Link>
+          <Link to="/" className="Link">
+            Kontakt
+          </Link>
+        </div>
       </div>
 
-      <div className="BurgerContainer">
-        <GiHamburgerMenu className="HamburgerIcon" />
-      </div>
-
-      <div className="LinksContainer">
-        <div className="DropLinkContainer">
-          <Link to="/" className="Link">
-            Medlemskap <AiOutlineDown className="Arrow" />
-          </Link>
-          <div className="DropContent">
-            <Link to="/" className="DropLink">
-              Information
-            </Link>
-            <Link to="/" className="DropLink">
-              Bli medlem!
-            </Link>
-          </div>
-        </div>
-        <div className="DropLinkContainer">
-          <Link to="/" className="Link">
-            Om ORG <AiOutlineDown className="Arrow" />
-          </Link>
-          <div className="DropContent">
-            <Link to="/" className="DropLink">
-              Historia
-            </Link>
-            <Link to="/" className="DropLink">
-              Vår vision
-            </Link>
-            <Link to="/" className="DropLink">
-              Styrelse
-            </Link>
-            <Link to="/" className="DropLink">
-              Stadgar
-            </Link>
-            <Link to="/" className="DropLink">
-              Årsredovisningar
-            </Link>
-          </div>
-        </div>
-        <div className="DropLinkContainer">
-          <Link to="/" className="Link">
-            Gaming <AiOutlineDown className="Arrow" />
-          </Link>
-          <div className="DropContent">
-            <Link to="/" className="DropLink">
-              Counter Strike
-            </Link>
-            <Link to="/" className="DropLink">
-              Rocket League
-            </Link>
-          </div>
-        </div>
-        <div className="DropLinkContainer">
-          <Link to="/" className="Link">
-            Event <AiOutlineDown className="Arrow" />
-          </Link>
-          <div className="DropContent">
-            <Link to="/" className="DropLink">
-              Kommande event
-            </Link>
-            <Link to="/" className="DropLink">
-              Tidigare event
-            </Link>
-          </div>
-        </div>
-        <Link to="/" className="Link">
-          Gemenskap
-        </Link>
-        <Link to="/" className="Link">
-          Kontakt
-        </Link>
-      </div>
+      <div className="Second">{isClicked && <NavMobile />}</div>
     </Body>
   );
 };

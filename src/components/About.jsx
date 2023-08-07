@@ -7,7 +7,7 @@ import Gamer from "../assets/gamer.jpg";
 const Body = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: #d88200;
+  background: linear-gradient(#468b97, #1d5b79);
 
   & .Parent1 {
     display: flex;
@@ -16,7 +16,7 @@ const Body = styled.div`
     & .PointerContainer {
       position: absolute;
       top: 91vh;
-      z-index: 2;
+      z-index: 1;
 
       & .Pointer {
         font-size: 2em;
@@ -62,7 +62,7 @@ const Body = styled.div`
       top: 90vh;
       width: 300px;
       height: 300px;
-      background: #d88200;
+      background: #468b97;
       border-radius: 50%;
       z-index: -1;
     }
@@ -70,7 +70,7 @@ const Body = styled.div`
 
   & .LinkPage {
     text-decoration: none;
-    color: #8d5500;
+    color: #ef6262;
   }
 
   & .Parent2 {
