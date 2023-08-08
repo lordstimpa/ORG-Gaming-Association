@@ -18,17 +18,18 @@ const Body = styled.div`
   /* ORG logo and hamburger menu shown in the navbar */
   & .First {
     display: flex;
-    justify-content: space-between;
     max-width: 100%;
     max-height: 100%;
     z-index: 1;
+    justify-content: space-between;
 
     & .NameContainer {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-left: 5rem;
+      margin-left: 2rem;
+      margin-top: ${(props) =>
+        props.isScrolled || props.isClicked ? "0" : "2rem"};
 
       & .Org {
         z-index: 1;
@@ -52,6 +53,7 @@ const Body = styled.div`
 
   /* Links shown in the navbar */
   & .LinksContainer {
+    position: absolute;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -61,7 +63,7 @@ const Body = styled.div`
 
     & .Link {
       color: #fff;
-      padding: 1em;
+      padding: 1.3em;
       transition: color 0.2s ease-in-out;
 
       & .Arrow {

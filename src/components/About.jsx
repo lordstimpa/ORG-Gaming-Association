@@ -7,7 +7,7 @@ import Gamer from "../assets/gamer.jpg";
 const Body = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(#468b97, #1d5b79);
+  background: linear-gradient(#122427, #1d5b79);
 
   & .Parent1 {
     display: flex;
@@ -62,7 +62,7 @@ const Body = styled.div`
       top: 90vh;
       width: 300px;
       height: 300px;
-      background: #468b97;
+      background: #122427;
       border-radius: 50%;
       z-index: -1;
     }
@@ -75,28 +75,39 @@ const Body = styled.div`
 
   & .Parent2 {
     display: grid;
-    grid-template-columns: 1fr 32% 1fr 1fr;
+    grid-template-columns: 1fr 500px 600px 1fr;
     grid-template-rows: 4em repeat(3, auto) 4em;
     grid-gap: 1em;
     z-index: 3;
 
+    & .Text,
+    .Links,
+    .Picture {
+      border-radius: 2em;
+      padding: 2em;
+      color: #fff;
+    }
+
+    & h1 {
+      color: #ef6262;
+    }
+
     & .Text {
       grid-column: 2 / 3;
       grid-row: 2 / 5;
-      background: #fff;
-      border-radius: 2em;
-      padding: 2em;
-
-      h2 {
-        padding-top: 1em;
-      }
     }
 
-    & .Text > * {
+    & .Text > div > * {
       padding: 0.5rem;
+    }
 
-      & {
-      }
+    & .Text > div > h2 {
+      padding-top: 2rem;
+    }
+
+    & .Text > div:not(:last-child) {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #ef6262;
     }
 
     & .Picture {
@@ -106,10 +117,9 @@ const Body = styled.div`
       flex-direction: column;
 
       & img {
-        border: 1em solid #fff;
-        border-radius: 2em;
-        width: 640px;
         height: 360px;
+        width: 100%;
+        border-radius: 1em;
         object-fit: cover;
       }
     }
@@ -117,9 +127,6 @@ const Body = styled.div`
     & .Links {
       grid-column: 3 / 4;
       grid-row: 3 / 4;
-      border-radius: 2em;
-      background-color: #fff;
-      padding: 2em;
 
       & h3 {
         padding-bottom: 1rem;
@@ -136,18 +143,18 @@ const Body = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 5em 2em 2em 2em;
+      padding: 4em 0 2em 0;
 
-      & .Text {
-        max-width: 600px;
+      & .Text,
+      .Links,
+      .Picture {
+        width: 90%;
       }
 
       & .Picture {
-        display: none;
-      }
-
-      & .Links {
-        max-width: 600px;
+        & img {
+          max-width: none;
+        }
       }
     }
   }
@@ -173,37 +180,44 @@ const About = () => {
       <div className="Parent2">
         <div className="Text">
           <h1>Allmänt om ORG</h1>
-          <h2>Spelförening</h2>
-          <p>
-            ORG grundades år 2009 och har under en längre period endast bestått
-            av ett fåtal medlemmar som haft kul tillsammans. Nu har vi valt att
-            ta ORG till nästa nivå!
-          </p>
-          <p>
-            Genom att göra ORG till en äkta spelförening öppnar vi nu upp
-            portarna för fler medlemmar för att ta del av gemenskapen och allt
-            roligt som kommer längs resan.
-          </p>
-          <Link className="LinkPage">Mer om ORG!</Link>
-          <h2>Medlemskap</h2>
-          <p>
-            Som gratismedlem så bidrar man till organisationen mer än vad man
-            tror. Med hjälp av statligt subventionerade bidrag så får
-            organisationen möjlighet till att anordna större event och
-            turneringar.
-          </p>
-          <p>
-            För att man som medlem ska kunna delta på event och turneringar så
-            behöver man betala en avgift på 150kr som täcker ett helt år av
-            evenemang som ORG har att erbjuda.
-          </p>
-          <Link className="LinkPage">Mer om medlemskap!</Link>
-          <h2>Event</h2>
-          <p>
-            Vi kommer att erhålla event och turneringar året om, framförallt när
-            majoriteten av medlemmarna har det ledigt från jobb och studier.
-          </p>
-          <Link className="LinkPage">Mer om event!</Link>
+          <div>
+            <h2>Spelförening</h2>
+            <p>
+              ORG grundades år 2009 och har under en längre period endast
+              bestått av ett fåtal medlemmar som haft kul tillsammans. Nu har vi
+              valt att ta ORG till nästa nivå!
+            </p>
+            <p>
+              Genom att göra ORG till en äkta spelförening öppnar vi nu upp
+              portarna för fler medlemmar för att ta del av gemenskapen och allt
+              roligt som kommer längs resan.
+            </p>
+            <Link className="LinkPage">Mer om ORG!</Link>
+          </div>
+          <div>
+            <h2>Medlemskap</h2>
+            <p>
+              Som gratismedlem så bidrar man till organisationen mer än vad man
+              tror. Med hjälp av statligt subventionerade bidrag så får
+              organisationen möjlighet till att anordna större event och
+              turneringar.
+            </p>
+            <p>
+              För att man som medlem ska kunna delta på event och turneringar så
+              behöver man betala en avgift på 150kr som täcker ett helt år av
+              evenemang som ORG har att erbjuda.
+            </p>
+            <Link className="LinkPage">Mer om medlemskap!</Link>
+          </div>
+          <div>
+            <h2>Event</h2>
+            <p>
+              Vi kommer att erhålla event och turneringar året om, framförallt
+              när majoriteten av medlemmarna har det ledigt från jobb och
+              studier.
+            </p>
+            <Link className="LinkPage">Mer om event!</Link>
+          </div>
         </div>
         <div className="Picture">
           <img src={Gamer}></img>

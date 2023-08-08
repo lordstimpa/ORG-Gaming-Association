@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Gamer from "../assets/gamer.jpg";
+import Counter from "../assets/counter-strike.jpg";
+import { useState, useEffect } from "react";
 
 const Background = styled.div`
   position: fixed;
@@ -7,7 +9,7 @@ const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(${(props) => props.image});
+  background-image: url(${(props) => props.backgroundImg});
   background-size: cover;
   background-position: center;
   z-index: -1;
@@ -72,9 +74,26 @@ const Body = styled.div`
 `;
 
 const Hero = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const scrollThreshold = window.innerHeight;
+  const backgroundImage = scrollPosition >= scrollThreshold ? Counter : Gamer;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Body>
-      <Background image={Gamer} />
+      <Background backgroundImg={backgroundImage} />
 
       <div className="InfoCont">
         <div className="Title">

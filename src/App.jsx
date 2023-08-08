@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import More from "./components/More";
 import Footer from "./components/Footer";
 
 const Body = styled.div``;
@@ -20,6 +21,7 @@ function App() {
               <div>
                 <Hero />
                 <About />
+                <More />
               </div>
             }
           />
