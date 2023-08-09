@@ -7,7 +7,7 @@ import Gamer from "../assets/gamer.jpg";
 const Body = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(#122427, #1d5b79);
+  background: #272829;
 
   & .Parent1 {
     display: flex;
@@ -62,7 +62,7 @@ const Body = styled.div`
       top: 90vh;
       width: 300px;
       height: 300px;
-      background: #122427;
+      background: #272829;
       border-radius: 50%;
       z-index: -1;
     }
@@ -70,26 +70,24 @@ const Body = styled.div`
 
   & .LinkPage {
     text-decoration: none;
-    color: #ef6262;
+    color: #f30067;
   }
 
   & .Parent2 {
     display: grid;
-    grid-template-columns: 1fr 500px 600px 1fr;
+    grid-template-columns: 1fr 500px 550px 1fr;
     grid-template-rows: 4em repeat(3, auto) 4em;
-    grid-gap: 1em;
+    grid-gap: 3em;
     z-index: 3;
 
     & .Text,
     .Links,
     .Picture {
-      border-radius: 2em;
-      padding: 2em;
-      color: #fff;
+      color: #eaeaea;
     }
 
     & h1 {
-      color: #ef6262;
+      color: #00d1cd;
     }
 
     & .Text {
@@ -107,7 +105,7 @@ const Body = styled.div`
 
     & .Text > div:not(:last-child) {
       padding-bottom: 2rem;
-      border-bottom: 1px solid #ef6262;
+      border-bottom: 1px solid #eaeaea;
     }
 
     & .Picture {
@@ -127,9 +125,10 @@ const Body = styled.div`
     & .Links {
       grid-column: 3 / 4;
       grid-row: 3 / 4;
+      padding-bottom: 2rem;
 
-      & h3 {
-        padding-bottom: 1rem;
+      & h2 {
+        padding: 1rem;
       }
 
       & li {
@@ -143,7 +142,15 @@ const Body = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 4em 0 2em 0;
+      padding: 6em 0 2em 0;
+
+      & .Links {
+        border-top: 1px solid #eaeaea;
+
+        & h2 {
+          padding: 2rem 1rem 1rem 1rem;
+        }
+      }
 
       & .Text,
       .Links,
@@ -178,6 +185,10 @@ const About = () => {
       </div>
 
       <div className="Parent2">
+        <div className="Picture">
+          <img src={Gamer}></img>
+        </div>
+
         <div className="Text">
           <h1>Allmänt om ORG</h1>
           <div>
@@ -219,11 +230,9 @@ const About = () => {
             <Link className="LinkPage">Mer om event!</Link>
           </div>
         </div>
-        <div className="Picture">
-          <img src={Gamer}></img>
-        </div>
+
         <div className="Links">
-          <h3>Länkar</h3>
+          <h2>Länkar</h2>
           <ul>
             <li>
               <Link className="LinkPage">Betalning</Link>

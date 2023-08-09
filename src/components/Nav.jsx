@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineDown } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -12,7 +12,9 @@ const Body = styled.div`
   height: 65px;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   background: ${(props) =>
-    props.isScrolled || props.isClicked ? "rgb(0, 0, 0)" : "none"};
+    props.isScrolled || props.isClicked || !props.isHomePage
+      ? "rgb(0, 0, 0)"
+      : "none"};
   z-index: 2;
 
   /* ORG logo and hamburger menu shown in the navbar */
@@ -29,17 +31,23 @@ const Body = styled.div`
       align-items: center;
       margin-left: 2rem;
       margin-top: ${(props) =>
-        props.isScrolled || props.isClicked ? "0" : "2rem"};
+        props.isScrolled || props.isClicked || !props.isHomePage
+          ? "0"
+          : "2rem"};
 
       & .Org {
         z-index: 1;
         & img {
           width: ${(props) =>
-            props.isScrolled || props.isClicked ? "80px" : "200px"};
+            props.isScrolled || props.isClicked || !props.isHomePage
+              ? "80px"
+              : "200px"};
           margin-top: ${(props) =>
-            props.isScrolled || props.isClicked ? "1.5rem" : "10rem"};
+            props.isScrolled || props.isClicked || !props.isHomePage
+              ? "1.5rem"
+              : "10rem"};
           clip-path: ${(props) =>
-            props.isScrolled || props.isClicked
+            props.isScrolled || props.isClicked || !props.isHomePage
               ? "inset(0 0 1.3rem 0)"
               : "inset(0 0 0 0)"};
         }
@@ -71,7 +79,7 @@ const Body = styled.div`
       }
 
       :hover {
-        color: #ef6262;
+        color: #00d1cd;
       }
     }
 
@@ -93,19 +101,19 @@ const Body = styled.div`
       margin-left: 1em;
       backdrop-filter: blur(50px);
       background: rgba(0, 0, 0, 0.5);
-      border: 1px solid #ef6262;
+      border: 1px solid #00d1cd;
       border-radius: 0.5em;
       z-index: 9999;
 
       & .DropLink {
-        color: #fff;
+        color: #eaeaea;
         text-decoration: none;
         padding: 0.5em 1em;
         display: block;
         border-radius: 1em;
 
         :hover {
-          color: #ef6262;
+          color: #00d1cd;
         }
       }
     }
@@ -123,15 +131,15 @@ const Body = styled.div`
 
     & .HamburgerIcon {
       padding: 0.3em;
-      color: #000;
-      background: #ef6262;
+      color: #444444;
+      background: #00d1cd;
       border-radius: 50%;
       font-size: 2em;
       transition: color 0.2s ease-in-out;
 
       :hover {
         cursor: pointer;
-        color: #fff;
+        color: #eaeaea;
       }
     }
   }
@@ -161,9 +169,13 @@ const Body = styled.div`
           & .Org {
             & img {
               width: ${(props) =>
-                props.isScrolled || props.isClicked ? "80px" : "100px"};
+                props.isScrolled || props.isClicked || !props.isHomePage
+                  ? "80px"
+                  : "100px"};
               margin-top: ${(props) =>
-                props.isScrolled || props.isClicked ? "1.5rem" : "3rem"};
+                props.isScrolled || props.isClicked || !props.isHomePage
+                  ? "1.5rem"
+                  : "3rem"};
             }
           }
         }
@@ -175,6 +187,8 @@ const Body = styled.div`
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -200,7 +214,7 @@ const Nav = () => {
   };
 
   return (
-    <Body isScrolled={isScrolled} isClicked={isClicked}>
+    <Body isScrolled={isScrolled} isClicked={isClicked} isHomePage={isHomePage}>
       <div className="First">
         <div className="NameContainer">
           <Link to="/" className="Org">
@@ -214,14 +228,14 @@ const Nav = () => {
 
         <div className="LinksContainer">
           <div className="DropLinkContainer">
-            <Link to="/" className="Link">
+            <Link to="/membership" className="Link">
               Medlemskap <AiOutlineDown className="Arrow" />
             </Link>
             <div className="DropContent">
-              <Link to="/" className="DropLink">
+              <Link to={`/membership/information`} className="DropLink">
                 Information
               </Link>
-              <Link to="/" className="DropLink">
+              <Link to={`/membership/become-member`} className="DropLink">
                 Bli medlem!
               </Link>
             </div>

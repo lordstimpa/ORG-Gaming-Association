@@ -36,7 +36,7 @@ const Body = styled.div`
     text-align: center;
 
     h1 {
-      color: #ef6262;
+      color: #00d1cd;
     }
   }
 
@@ -44,7 +44,7 @@ const Body = styled.div`
     margin: 1em;
 
     p {
-      color: #fff;
+      color: #eaeaea;
     }
   }
 
@@ -56,17 +56,17 @@ const Body = styled.div`
 
     a {
       width: fit-content;
-      color: #fff;
+      color: #eaeaea;
       background: #000;
       border-radius: 2em;
-      border: 2px solid #ef6262;
+      border: 2px solid #00d1cd;
       padding: 0.5em 5em;
       text-decoration: none;
       transition: 0.2s ease-in-out;
 
       :hover {
         cursor: pointer;
-        background: #ef6262;
+        background: #00d1cd;
         transform: scale(1.1);
       }
     }

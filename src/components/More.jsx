@@ -17,13 +17,13 @@ const Body = styled.div`
       border-radius: 2em;
       padding: 2em;
       margin: 4em 0;
-      color: #fff;
+      color: #eaeaea;
       border-radius: 2rem;
       backdrop-filter: blur(50px);
       background: rgba(0, 0, 0, 0.4);
 
       & h1 {
-        color: #ef6262;
+        color: #00d1cd;
       }
 
       & div > * {
@@ -36,7 +36,7 @@ const Body = styled.div`
 
       & > div:not(:last-child) {
         padding-bottom: 2rem;
-        border-bottom: 1px solid #ef6262;
+        border-bottom: 1px solid #00d1cd;
       }
     }
   }

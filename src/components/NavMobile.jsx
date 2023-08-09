@@ -5,7 +5,7 @@ const Body = styled.div`
   position: absolute;
   right: 0;
   width: 15rem;
-  background-color: #000;
+  background-color: #1a1a1b;
   max-height: 91.5vh;
   z-index: 50;
   overflow-y: scroll;
@@ -17,7 +17,7 @@ const Body = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #468b97;
+    background-color: #00d1cd;
     border-radius: 1rem;
   }
 
@@ -28,30 +28,34 @@ const Body = styled.div`
   & .Link {
     font-weight: 600;
     font-size: 1.5rem;
-    color: #ef6262;
+    color: #00d1cd;
     text-decoration: none;
     width: fit-content;
     transition: color 0.2s ease-in-out;
 
     :hover {
-      color: rgba(239, 98, 98, 0.5);
+      color: #eaeaea;
     }
   }
 
   & .DropLink {
-    color: #fff;
+    color: #eaeaea;
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: color 0.2s ease-in-out;
 
     :hover {
-      color: #ef6262;
+      color: #00d1cd;
     }
   }
 
   & .Child {
     padding: 1rem;
     width: fit-content;
+  }
+
+  & .Child:last-child {
+    padding-bottom: 3rem;
   }
 
   & .GrandChild {
@@ -65,16 +69,16 @@ const NavMobile = () => {
     <Body>
       <div className="Parent">
         <div className="Child">
-          <Link to="/" className="Link">
+          <Link to="/membership" className="Link">
             Medlemskap
           </Link>
 
           <div className="GrandChild">
-            <Link to="/" className="DropLink">
+            <Link to={`/membership/information`} className="DropLink">
               Information
             </Link>
 
-            <Link to="/" className="DropLink">
+            <Link to={`/membership/become-member`} className="DropLink">
               Bli medlem!
             </Link>
           </div>
