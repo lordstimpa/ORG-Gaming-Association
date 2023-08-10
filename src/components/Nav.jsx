@@ -231,33 +231,39 @@ const Nav = () => {
             <Link to="/membership" className="Link">
               Medlemskap <AiOutlineDown className="Arrow" />
             </Link>
+
             <div className="DropContent">
               <Link to={`/membership/information`} className="DropLink">
                 Information
               </Link>
+
               <Link to={`/membership/become-member`} className="DropLink">
                 Bli medlem!
               </Link>
             </div>
           </div>
           <div className="DropLinkContainer">
-            <Link to="/" className="Link">
+            <Link to="/about" className="Link">
               Om ORG <AiOutlineDown className="Arrow" />
             </Link>
             <div className="DropContent">
-              <Link to="/" className="DropLink">
+              <Link to="/about/history" className="DropLink">
                 Historia
               </Link>
-              <Link to="/" className="DropLink">
+
+              <Link to="/about/vision" className="DropLink">
                 Vår vision
               </Link>
-              <Link to="/" className="DropLink">
+
+              <Link to="/about/board" className="DropLink">
                 Styrelse
               </Link>
-              <Link to="/" className="DropLink">
+
+              <Link to="/about/statutes" className="DropLink">
                 Stadgar
               </Link>
-              <Link to="/" className="DropLink">
+
+              <Link to="/about/annual-reports" className="DropLink">
                 Årsredovisningar
               </Link>
             </div>
@@ -266,10 +272,12 @@ const Nav = () => {
             <Link to="/" className="Link">
               Gaming <AiOutlineDown className="Arrow" />
             </Link>
+
             <div className="DropContent">
               <Link to="/" className="DropLink">
                 Counter Strike
               </Link>
+
               <Link to="/" className="DropLink">
                 Rocket League
               </Link>
@@ -279,10 +287,12 @@ const Nav = () => {
             <Link to="/" className="Link">
               Event <AiOutlineDown className="Arrow" />
             </Link>
+
             <div className="DropContent">
               <Link to="/" className="DropLink">
                 Kommande event
               </Link>
+
               <Link to="/" className="DropLink">
                 Tidigare event
               </Link>
@@ -291,6 +301,7 @@ const Nav = () => {
           <Link to="/" className="Link">
             Gemenskap
           </Link>
+
           <Link to="/" className="Link">
             Kontakt
           </Link>

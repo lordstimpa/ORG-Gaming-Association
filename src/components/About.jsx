@@ -2,12 +2,12 @@ import { useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaHandPointDown } from "react-icons/fa";
-import Gamer from "../assets/gamer.jpg";
+import Org from "../assets/org-rasta.png";
 
 const Body = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: #272829;
+  background: #eaeaea;
 
   & .Parent1 {
     display: flex;
@@ -20,7 +20,7 @@ const Body = styled.div`
 
       & .Pointer {
         font-size: 2em;
-        color: #fff;
+        color: #444444;
         padding: 0.2em;
         -webkit-animation: AnimatePointer 2s ease infinite;
         animation: AnimatePointer 2s ease infinite;
@@ -62,7 +62,7 @@ const Body = styled.div`
       top: 90vh;
       width: 300px;
       height: 300px;
-      background: #272829;
+      background: #eaeaea;
       border-radius: 50%;
       z-index: -1;
     }
@@ -70,20 +70,29 @@ const Body = styled.div`
 
   & .LinkPage {
     text-decoration: none;
-    color: #f30067;
+    color: #00d1cd;
   }
 
   & .Parent2 {
     display: grid;
     grid-template-columns: 1fr 500px 550px 1fr;
     grid-template-rows: 4em repeat(3, auto) 4em;
-    grid-gap: 3em;
+    grid-gap: 2em;
     z-index: 3;
 
     & .Text,
     .Links,
     .Picture {
-      color: #eaeaea;
+      color: #444444;
+    }
+
+    & .Text,
+    .Links {
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px,
+        rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+        rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     }
 
     & h1 {
@@ -99,12 +108,8 @@ const Body = styled.div`
       padding: 0.5rem;
     }
 
-    & .Text > div > h2 {
-      padding-top: 2rem;
-    }
-
     & .Text > div:not(:last-child) {
-      padding-bottom: 2rem;
+      padding-bottom: 1rem;
       border-bottom: 1px solid #eaeaea;
     }
 
@@ -113,22 +118,21 @@ const Body = styled.div`
       grid-row: 2 / 3;
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       & img {
-        height: 360px;
-        width: 100%;
+        width: 70%;
         border-radius: 1em;
-        object-fit: cover;
+        scale: calc(1.4);
       }
     }
 
     & .Links {
       grid-column: 3 / 4;
       grid-row: 3 / 4;
-      padding-bottom: 2rem;
 
       & h2 {
-        padding: 1rem;
+        padding-bottom: 1rem;
       }
 
       & li {
@@ -146,22 +150,16 @@ const Body = styled.div`
 
       & .Links {
         border-top: 1px solid #eaeaea;
-
-        & h2 {
-          padding: 2rem 1rem 1rem 1rem;
-        }
       }
 
       & .Text,
       .Links,
       .Picture {
-        width: 90%;
+        width: 80%;
       }
 
       & .Picture {
-        & img {
-          max-width: none;
-        }
+        display: none;
       }
     }
   }
@@ -186,7 +184,7 @@ const About = () => {
 
       <div className="Parent2">
         <div className="Picture">
-          <img src={Gamer}></img>
+          <img src={Org}></img>
         </div>
 
         <div className="Text">
@@ -218,7 +216,9 @@ const About = () => {
               behöver man betala en avgift på 150kr som täcker ett helt år av
               evenemang som ORG har att erbjuda.
             </p>
-            <Link className="LinkPage">Mer om medlemskap!</Link>
+            <Link to="/membership" className="LinkPage">
+              Mer om medlemskap!
+            </Link>
           </div>
           <div>
             <h2>Event</h2>

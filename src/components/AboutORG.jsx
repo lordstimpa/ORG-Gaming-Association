@@ -55,11 +55,27 @@ const Body = styled.div`
     grid-column: 3 / 4;
     grid-row: 3 / 4;
     background: #eaeaea;
-    padding: 1em;
+    padding: 2em;
     border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+      rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+      rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
-    & p {
-      padding: 0.2rem;
+    & > div {
+      padding-bottom: 1rem;
+    }
+
+    & h4 {
+      padding: 0.5rem 0;
+    }
+
+    & p,
+    h4 {
+      padding: 0.2rem 1rem;
+    }
+
+    & ol {
+      padding: 0.2rem 3.2rem;
     }
   }
 
@@ -81,23 +97,35 @@ const Body = styled.div`
   }
 `;
 
-const Membership = ({ contentComponent }) => {
+const AboutORG = ({ contentComponent }) => {
   return (
     <Body>
       <div className="Title">
-        <h1>Medlemskap</h1>
+        <h1>Om ORG</h1>
       </div>
 
       <div className="Links">
         <h3>Links</h3>
 
         <div className="LinkContainer">
-          <Link to={`/membership/information`} className="Link">
-            Information
+          <Link to={`/about/history`} className="Link">
+            Historia
           </Link>
 
-          <Link to={`/membership/become-member`} className="Link">
-            Bli Medlem
+          <Link to={`/about/vision`} className="Link">
+            Vår vision
+          </Link>
+
+          <Link to={`/about/board`} className="Link">
+            Styrelse
+          </Link>
+
+          <Link to={`/about/statutes`} className="Link">
+            Stadgar
+          </Link>
+
+          <Link to={`/about/annual-reports`} className="Link">
+            Årsredovisningar
           </Link>
         </div>
       </div>
@@ -107,4 +135,4 @@ const Membership = ({ contentComponent }) => {
   );
 };
 
-export default Membership;
+export default AboutORG;

@@ -90,23 +90,23 @@ const NavMobile = () => {
           </Link>
 
           <div className="GrandChild">
-            <Link to="/" className="DropLink">
+            <Link to="/about/history" className="DropLink">
               Historia
             </Link>
 
-            <Link to="/" className="DropLink">
+            <Link to="/about/vision" className="DropLink">
               Vår vision
             </Link>
 
-            <Link to="/" className="DropLink">
+            <Link to="/about/board" className="DropLink">
               Styrelse
             </Link>
 
-            <Link to="/" className="DropLink">
+            <Link to="/about/statutes" className="DropLink">
               Stadgar
             </Link>
 
-            <Link to="/" className="DropLink">
+            <Link to="/about/annual-reports" className="DropLink">
               Årsredovisningar
             </Link>
           </div>
