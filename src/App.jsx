@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Nav from "./components/Nav";
 // Homepage
 import Hero from "./components/Hero";
-import About from "./components/About";
+import General from "./components/General";
 import More from "./components/More";
 // Membership
 import Membership from "./components/Membership";
@@ -34,7 +34,7 @@ function App() {
             element={
               <div>
                 <Hero />
-                <About />
+                <General />
                 <More />
               </div>
             }

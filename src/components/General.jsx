@@ -165,7 +165,7 @@ const Body = styled.div`
   }
 `;
 
-const About = () => {
+const General = () => {
   const ref = useRef(null);
 
   const handleClick = () => {
@@ -201,7 +201,9 @@ const About = () => {
               portarna för fler medlemmar för att ta del av gemenskapen och allt
               roligt som kommer längs resan.
             </p>
-            <Link className="LinkPage">Mer om ORG!</Link>
+            <Link to="/about" className="LinkPage">
+              Mer om ORG!
+            </Link>
           </div>
           <div>
             <h2>Medlemskap</h2>
@@ -247,4 +249,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default General;
