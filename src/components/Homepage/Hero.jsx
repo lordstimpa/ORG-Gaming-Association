@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Gamer from "../assets/gamer.jpg";
-import Counter from "../assets/counter-strike.jpg";
+import Gamer from "../../assets/gamer.jpg";
+import Counter from "../../assets/counter-strike.jpg";
 import { useState, useEffect } from "react";
 
 const Background = styled.div`

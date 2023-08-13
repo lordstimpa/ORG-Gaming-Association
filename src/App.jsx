@@ -1,24 +1,26 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 // Nav
-import Nav from "./components/Nav";
+import Nav from "./components/Navigation/Nav";
 // Homepage
-import Hero from "./components/Hero";
-import General from "./components/General";
-import More from "./components/More";
-// Membership
-import Membership from "./components/Membership";
-import MembershipInfo from "./components/MembershipInfo";
-import BecomeMember from "./components/BecomeMember";
+import Hero from "./components/Homepage/Hero";
+import General from "./components/Homepage/General";
+import More from "./components/Homepage/More";
+// Information Subpage
+import DynamicComponent from "./components/Subpages/DynamicComponent";
 // About ORG
-import AboutORG from "./components/AboutORG";
-import History from "./components/History";
-import Vision from "./components/Vision";
-import Board from "./components/Board";
-import Statutes from "./components/Statutes";
-import AnnualReports from "./components/AnnualReports";
+import Information from "./components/Subpages/Sub-Information";
+import History from "./components/Subpages/SubSub-History";
+import Vision from "./components/Subpages/SubSub-Vision";
+import Board from "./components/Subpages/SubSub-Board";
+import Statutes from "./components/Subpages/SubSub-Statutes";
+import AnnualReports from "./components/Subpages/SubSub-AnnualReports";
+// Membership
+import Membership from "./components/Subpages/Sub-Membership";
+import MembershipInfo from "./components/Subpages/SubSub-MembershipInfo";
+import BecomeMember from "./components/Subpages/SubSub-BecomeMember";
 // Footer
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 
 const Body = styled.div``;
 
@@ -27,6 +29,7 @@ function App() {
     <Body>
       <Router>
         <Nav />
+
         <Routes>
           <Route
             exact
@@ -39,52 +42,62 @@ function App() {
               </div>
             }
           />
-          <Route exact path="/membership" element={<Membership />} />
 
           <Route
             exact
-            path="/membership/information"
-            element={<Membership contentComponent={<MembershipInfo />} />}
+            path="/about"
+            element={<DynamicComponent contentComponent={<Information />} />}
           />
-
-          <Route
-            exact
-            path="/membership/become-member"
-            element={<Membership contentComponent={<BecomeMember />} />}
-          />
-
-          <Route exact path="/about" element={<AboutORG />} />
 
           <Route
             exact
             path="/about/history"
-            element={<AboutORG contentComponent={<History />} />}
+            element={<DynamicComponent contentComponent={<History />} />}
           />
 
           <Route
             exact
             path="/about/vision"
-            element={<AboutORG contentComponent={<Vision />} />}
+            element={<DynamicComponent contentComponent={<Vision />} />}
           />
 
           <Route
             exact
             path="/about/board"
-            element={<AboutORG contentComponent={<Board />} />}
+            element={<DynamicComponent contentComponent={<Board />} />}
           />
 
           <Route
             exact
             path="/about/statutes"
-            element={<AboutORG contentComponent={<Statutes />} />}
+            element={<DynamicComponent contentComponent={<Statutes />} />}
           />
 
           <Route
             exact
             path="/about/annual-reports"
-            element={<AboutORG contentComponent={<AnnualReports />} />}
+            element={<DynamicComponent contentComponent={<AnnualReports />} />}
+          />
+
+          <Route
+            exact
+            path="/membership"
+            element={<DynamicComponent contentComponent={<Membership />} />}
+          />
+
+          <Route
+            exact
+            path="/membership/information"
+            element={<DynamicComponent contentComponent={<MembershipInfo />} />}
+          />
+
+          <Route
+            exact
+            path="/membership/become-member"
+            element={<DynamicComponent contentComponent={<BecomeMember />} />}
           />
         </Routes>
+
         <Footer />
       </Router>
     </Body>

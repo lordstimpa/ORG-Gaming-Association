@@ -85,7 +85,7 @@ const NavMobile = () => {
         </div>
 
         <div className="Child">
-          <Link to="/" className="Link">
+          <Link to="/about" className="Link">
             Om ORG
           </Link>
 

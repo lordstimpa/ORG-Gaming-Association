@@ -2,12 +2,13 @@ import { useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaHandPointDown } from "react-icons/fa";
-import Org from "../assets/org-rasta.png";
+import Org from "../../assets/org-rasta.png";
 
 const Body = styled.div`
   width: 100%;
   min-height: 100vh;
   background: #eaeaea;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 
   & .Parent1 {
     display: flex;

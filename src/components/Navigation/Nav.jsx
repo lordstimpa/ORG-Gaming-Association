@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineDown } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Org from "../assets/org.png";
-import NavMobile from "./NavMobile";
+import Org from "../../assets/org.png";
+import MobileNav from "./Mobile-Nav";
 
 const Body = styled.div`
   position: fixed;
@@ -308,7 +308,7 @@ const Nav = () => {
         </div>
       </div>
 
-      <div className="Second">{isClicked && <NavMobile />}</div>
+      <div className="Second">{isClicked && <MobileNav />}</div>
     </Body>
   );
 };
