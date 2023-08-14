@@ -4,7 +4,7 @@ const Information = () => {
   return (
     <>
       <div className="Title">
-        <h1>Om ORG</h1>
+        <h1>OM ORG</h1>
       </div>
 
       <div className="Info">

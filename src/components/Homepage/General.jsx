@@ -6,7 +6,7 @@ import Org from "../../assets/org-rasta.png";
 
 const Body = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 100svh;
   background: #eaeaea;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 
@@ -16,15 +16,13 @@ const Body = styled.div`
 
     & .PointerContainer {
       position: absolute;
-      top: 91vh;
+      top: 92.5svh;
       z-index: 1;
 
       & .Pointer {
         font-size: 2em;
         color: #444444;
         padding: 0.2em;
-        -webkit-animation: AnimatePointer 2s ease infinite;
-        animation: AnimatePointer 2s ease infinite;
         transition: 0.1s ease-in-out;
 
         :hover {
@@ -32,35 +30,11 @@ const Body = styled.div`
           transform: scale(1.2);
         }
       }
-
-      @-webkit-keyframes AnimatePointer {
-        0% {
-          margin-top: 0.5em;
-        }
-        50% {
-          margin-top: 0em;
-        }
-        100% {
-          margin-top: 0.5em;
-        }
-      }
-
-      @keyframes AnimatePointer {
-        0% {
-          margin-top: 0.5em;
-        }
-        50% {
-          margin-top: 0em;
-        }
-        100% {
-          margin-top: 0.5em;
-        }
-      }
     }
 
     & .Bubble {
       position: absolute;
-      top: 90vh;
+      top: 90svh;
       width: 300px;
       height: 300px;
       background: #eaeaea;
@@ -71,24 +45,22 @@ const Body = styled.div`
 
   & .LinkPage {
     text-decoration: none;
-    color: #00d1cd;
+    color: #f30067;
   }
 
   & .Parent2 {
     display: grid;
-    grid-template-columns: 1fr 500px 550px 1fr;
-    grid-template-rows: 4em repeat(3, auto) 4em;
+    grid-template-columns: 1fr 600px 600px 1fr;
+    grid-template-rows: 4em repeat(2, auto) 4em;
     grid-gap: 2em;
     z-index: 3;
 
     & .Text,
-    .Links,
     .Picture {
       color: #444444;
     }
 
-    & .Text,
-    .Links {
+    & .Text {
       padding: 2rem;
       border-radius: 1rem;
       box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px,
@@ -97,7 +69,8 @@ const Body = styled.div`
     }
 
     & h1 {
-      color: #00d1cd;
+      color: #f30067;
+      font-family: "Orbitron", Arial, Helvetica, sans-serif;
     }
 
     & .Text {
@@ -111,14 +84,14 @@ const Body = styled.div`
 
     & .Text > div:not(:last-child) {
       padding-bottom: 1rem;
-      border-bottom: 1px solid #eaeaea;
+      border-bottom: 1px solid #f30067;
     }
 
     & .Picture {
       grid-column: 3 / 4;
-      grid-row: 2 / 3;
+      grid-row: 2 / 4;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
 
       & img {
@@ -127,34 +100,20 @@ const Body = styled.div`
         scale: calc(1.4);
       }
     }
-
-    & .Links {
-      grid-column: 3 / 4;
-      grid-row: 3 / 4;
-
-      & h2 {
-        padding-bottom: 1rem;
-      }
-
-      & li {
-        padding: 0.2rem;
-      }
-    }
   }
 
   @media only screen and (max-width: 1170px) {
-    .Parent2 {
+    & .Parent1 {
+      display: none;
+    }
+
+    & .Parent2 {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 6em 0 2em 0;
 
-      & .Links {
-        border-top: 1px solid #eaeaea;
-      }
-
       & .Text,
-      .Links,
       .Picture {
         width: 80%;
       }
@@ -232,18 +191,6 @@ const General = () => {
             </p>
             <Link className="LinkPage">Mer om event!</Link>
           </div>
-        </div>
-
-        <div className="Links">
-          <h2>Länkar</h2>
-          <ul>
-            <li>
-              <Link className="LinkPage">Betalning</Link>
-            </li>
-            <li>
-              <Link className="LinkPage">Betalning</Link>
-            </li>
-          </ul>
         </div>
       </div>
     </Body>

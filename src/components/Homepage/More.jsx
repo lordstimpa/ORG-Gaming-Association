@@ -1,42 +1,48 @@
 import styled from "styled-components";
+import {
+  PiComputerTower,
+  PiUsersThree,
+  PiGlobe,
+  PiTrophy,
+} from "react-icons/pi";
 
 const Body = styled.div`
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1100px 1fr;
-  grid-template-rows: 4em auto 4em;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   & .Parent {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     align-items: center;
 
     & .Child {
-      border-radius: 2em;
-      padding: 2em;
-      margin: 4em 0;
-      color: #eaeaea;
+      height: 250px;
+      width: 250px;
       border-radius: 2rem;
-      backdrop-filter: blur(50px);
+      padding: 2rem;
+      margin: 2rem;
+      color: #eaeaea;
+      backdrop-filter: blur(25px);
       background: rgba(0, 0, 0, 0.4);
+      text-align: center;
 
-      & h1 {
-        color: #00d1cd;
+      & h2 {
+        color: #f30067;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        font-family: "Orbitron", Arial, Helvetica, sans-serif;
+        border-bottom: 2px solid #f30067;
       }
 
-      & div > * {
-        padding: 0.5rem;
+      & p {
+        font-size: 0.8rem;
       }
 
-      & div > h2 {
-        padding-top: 2rem;
-      }
-
-      & > div:not(:last-child) {
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #00d1cd;
+      & .Icon {
+        font-size: 8rem;
       }
     }
   }
@@ -57,35 +63,41 @@ const More = () => {
     <Body>
       <div className="Parent">
         <div className="Child">
-          <h1>Lorem Ipsum</h1>
           <div>
-            <h2>Lorem Ipsum</h2>
+            <PiComputerTower className="Icon" />
+            <h2>LAN</h2>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              Delta på våra LAN-event där vi samlar alla våra medlemmar för en
+              härlig träff med fokus på spel och roligheter!
             </p>
           </div>
+        </div>
+        <div className="Child">
           <div>
-            <h2>Lorem Ipsum</h2>
+            <PiTrophy className="Icon" />
+            <h2>Turneringar</h2>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              Möt motståndare i en kamp om att vinna schyssta priser i en rad
+              olika populära spel!
+            </p>
+          </div>
+        </div>
+        <div className="Child">
+          <div>
+            <PiGlobe className="Icon" />
+            <h2>Online</h2>
+            <p>
+              Lira spel online via vår discord server och njut av långa svettiga
+              nätter!
+            </p>
+          </div>
+        </div>
+        <div className="Child">
+          <div>
+            <PiUsersThree className="Icon" />
+            <h2>Gemenskap</h2>
+            <p>
+              Lär känna nya spelintresserade nördar och få livslånga vänner!
             </p>
           </div>
         </div>

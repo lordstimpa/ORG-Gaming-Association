@@ -6,7 +6,7 @@ const Body = styled.div`
   right: 0;
   width: 15rem;
   background-color: #1a1a1b;
-  max-height: 91.5vh;
+  max-height: 91svh;
   z-index: 50;
   overflow-y: scroll;
   direction: rtl;
@@ -34,7 +34,7 @@ const Body = styled.div`
     transition: color 0.2s ease-in-out;
 
     :hover {
-      color: #eaeaea;
+      color: #00d1cd;
     }
   }
 
@@ -69,22 +69,6 @@ const NavMobile = () => {
     <Body>
       <div className="Parent">
         <div className="Child">
-          <Link to="/membership" className="Link">
-            Medlemskap
-          </Link>
-
-          <div className="GrandChild">
-            <Link to={`/membership/information`} className="DropLink">
-              Information
-            </Link>
-
-            <Link to={`/membership/become-member`} className="DropLink">
-              Bli medlem!
-            </Link>
-          </div>
-        </div>
-
-        <div className="Child">
           <Link to="/about" className="Link">
             Om ORG
           </Link>
@@ -113,6 +97,38 @@ const NavMobile = () => {
         </div>
 
         <div className="Child">
+          <Link to="/membership" className="Link">
+            Medlemskap
+          </Link>
+
+          <div className="GrandChild">
+            <Link to={`/membership/information`} className="DropLink">
+              Information
+            </Link>
+
+            <Link to={`/membership/become-member`} className="DropLink">
+              Bli medlem!
+            </Link>
+          </div>
+        </div>
+
+        <div className="Child">
+          <Link to="/event" className="Link">
+            Event
+          </Link>
+
+          <div className="GrandChild">
+            <Link to="/event/upcomming-events" className="DropLink">
+              Kommande event
+            </Link>
+
+            <Link to="/event/past-events" className="DropLink">
+              Tidigare event
+            </Link>
+          </div>
+        </div>
+
+        <div className="Child">
           <Link to="/" className="Link">
             Gaming
           </Link>
@@ -129,29 +145,7 @@ const NavMobile = () => {
         </div>
 
         <div className="Child">
-          <Link to="/" className="Link">
-            Event
-          </Link>
-
-          <div className="GrandChild">
-            <Link to="/" className="DropLink">
-              Kommande event
-            </Link>
-
-            <Link to="/" className="DropLink">
-              Tidigare event
-            </Link>
-          </div>
-        </div>
-
-        <div className="Child">
-          <Link to="/" className="Link">
-            Gemenskap
-          </Link>
-        </div>
-
-        <div className="Child">
-          <Link to="/" className="Link">
+          <Link to="/contact" className="Link">
             Kontakt
           </Link>
         </div>

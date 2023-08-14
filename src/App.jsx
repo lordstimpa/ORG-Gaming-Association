@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import styled from "styled-components";
 // Nav
 import Nav from "./components/Navigation/Nav";
 // Homepage
@@ -19,14 +18,18 @@ import AnnualReports from "./components/Subpages/SubSub-AnnualReports";
 import Membership from "./components/Subpages/Sub-Membership";
 import MembershipInfo from "./components/Subpages/SubSub-MembershipInfo";
 import BecomeMember from "./components/Subpages/SubSub-BecomeMember";
+// Event
+import Event from "./components/Subpages/Sub-Event";
+import UpcommingEvents from "./components/Subpages/SubSub-UpcommingEvents";
+import PastEvents from "./components/Subpages/SubSub-PastEvents";
+// Contact
+import Contact from "./components/Subpages/Sub-Contact";
 // Footer
 import Footer from "./components/Footer/Footer";
 
-const Body = styled.div``;
-
 function App() {
   return (
-    <Body>
+    <>
       <Router>
         <Nav />
 
@@ -96,11 +99,37 @@ function App() {
             path="/membership/become-member"
             element={<DynamicComponent contentComponent={<BecomeMember />} />}
           />
+
+          <Route
+            exact
+            path="/event"
+            element={<DynamicComponent contentComponent={<Event />} />}
+          />
+
+          <Route
+            exact
+            path="/event/upcomming-events"
+            element={
+              <DynamicComponent contentComponent={<UpcommingEvents />} />
+            }
+          />
+
+          <Route
+            exact
+            path="/event/past-events"
+            element={<DynamicComponent contentComponent={<PastEvents />} />}
+          />
+
+          <Route
+            exact
+            path="/contact"
+            element={<DynamicComponent contentComponent={<Contact />} />}
+          />
         </Routes>
 
         <Footer />
       </Router>
-    </Body>
+    </>
   );
 }
 

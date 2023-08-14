@@ -7,6 +7,7 @@ import { AiOutlineDown } from "react-icons/ai";
 const Body = styled.div`
   grid-column: 2 / 3;
   grid-row: 3 / 4;
+  padding-top: 2rem;
 
   & .Links {
     margin-bottom: 2rem;
@@ -22,18 +23,22 @@ const Body = styled.div`
         display: flex;
         justify-content: space-between;
         width: 100%;
-        border-bottom: 1px solid #00d1cd;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
         & .MainLink {
           font-weight: 600;
           padding: 0.6rem;
+          width: 100%;
         }
 
         & .Arrow {
           padding: 0.8rem;
 
           :hover {
-            color: #00d1cd;
+            color: #f30067;
             cursor: pointer;
           }
         }
@@ -58,6 +63,10 @@ const Body = styled.div`
           padding: 0.6rem;
           width: auto;
         }
+
+        & .Link:last-of-type {
+          margin-bottom: 1rem;
+        }
       }
 
       & .Link,
@@ -67,25 +76,25 @@ const Body = styled.div`
         width: fit-content;
 
         :hover {
-          color: #00d1cd;
+          color: #f30067;
         }
       }
 
       & .active {
-        color: #00d1cd;
+        color: #f30067;
       }
     }
   }
 
   @media only screen and (max-width: 900px) {
-    grid-column: 2 / 4;
-    grid-row: 3 / 4;
+    display: none;
   }
 `;
 
 const NavLinks = () => {
   const [dropMenu1, setDropMenu1] = useState(false);
   const [dropMenu2, setDropMenu2] = useState(false);
+  const [dropMenu3, setDropMenu3] = useState(false);
 
   const handleDrop1 = () => {
     setDropMenu1(!dropMenu1);
@@ -93,6 +102,10 @@ const NavLinks = () => {
 
   const handleDrop2 = () => {
     setDropMenu2(!dropMenu2);
+  };
+
+  const handleDrop3 = () => {
+    setDropMenu3(!dropMenu3);
   };
 
   return (
@@ -194,6 +207,51 @@ const NavLinks = () => {
               </NavLink>
             </div>
           )}
+
+          <div className="MainLinkContainer">
+            <NavLink
+              to={`/event`}
+              className="MainLink"
+              activeclassname="active"
+            >
+              Event
+            </NavLink>
+            <AiOutlineDown
+              className="Arrow"
+              id="Arrow2"
+              onClick={handleDrop3}
+            />
+          </div>
+
+          {dropMenu3 && (
+            <div className="DropDownLinkContainer">
+              <NavLink
+                to={`/event/upcomming-events`}
+                className="Link"
+                activeclassname="active"
+              >
+                Kommande event
+              </NavLink>
+
+              <NavLink
+                to={`/event/past-events`}
+                className="Link"
+                activeclassname="active"
+              >
+                Tidigare event
+              </NavLink>
+            </div>
+          )}
+
+          <div className="MainLinkContainer">
+            <NavLink
+              to={`/contact`}
+              className="MainLink"
+              activeclassname="active"
+            >
+              Kontakt
+            </NavLink>
+          </div>
         </div>
       </div>
     </Body>

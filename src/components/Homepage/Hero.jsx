@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Gamer from "../../assets/gamer.jpg";
-import Counter from "../../assets/counter-strike.jpg";
+import Counter from "../../assets/keyboard.jpg";
 import { useState, useEffect } from "react";
 
 const Background = styled.div`
@@ -18,16 +18,16 @@ const Background = styled.div`
 const Body = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   & .InfoCont {
     border-radius: 2em;
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(25px);
     background: rgba(0, 0, 0, 0.4);
-    padding: 1.5em;
+    padding: 2em;
     margin: 1em;
   }
 
@@ -36,12 +36,13 @@ const Body = styled.div`
     text-align: center;
 
     h1 {
-      color: #00d1cd;
+      color: #f30067;
     }
   }
 
   & .Text {
     margin: 1em;
+    text-align: center;
 
     p {
       color: #eaeaea;
@@ -49,7 +50,6 @@ const Body = styled.div`
   }
 
   & .Medlem {
-    margin-top: 2em;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -59,17 +59,39 @@ const Body = styled.div`
       color: #eaeaea;
       background: #000;
       border-radius: 2em;
-      border: 2px solid #00d1cd;
+      border: 2px solid #f30067;
       padding: 0.5em 5em;
       text-decoration: none;
       transition: 0.2s ease-in-out;
 
       :hover {
         cursor: pointer;
-        background: #00d1cd;
+        background: #f30067;
         transform: scale(1.1);
       }
     }
+  }
+
+  @media only screen and (max-width: 1200px) {
+  }
+
+  @media only screen and (max-width: 900px) {
+    & .InfoCont {
+      padding: 1em;
+      margin: 1em;
+    }
+    & .Title {
+      font-size: 0.8rem;
+    }
+    & .Text > p {
+      font-size: 0.8rem;
+    }
+    & .Medlem > a {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media only screen and (max-width: 680px) {
   }
 `;
 

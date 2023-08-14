@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineDown } from "react-icons/ai";
+import { HiX } from "react-icons/hi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Org from "../../assets/org.png";
 import MobileNav from "./Mobile-Nav";
@@ -149,37 +150,29 @@ const Body = styled.div`
   }
 
   @media only screen and (max-width: 1170px) {
-    .First {
+    & .First {
       .NameContainer {
-        margin-left: 1rem;
-      }
-
-      .BurgerContainer {
-        display: flex;
-      }
-
-      .LinksContainer {
-        display: none;
-      }
-    }
-
-    @media only screen and (max-width: 800px) {
-      .First {
-        .NameContainer {
-          & .Org {
-            & img {
-              width: ${(props) =>
-                props.isScrolled || props.isClicked || !props.isHomePage
-                  ? "80px"
-                  : "100px"};
-              margin-top: ${(props) =>
-                props.isScrolled || props.isClicked || !props.isHomePage
-                  ? "1.5rem"
-                  : "3rem"};
-            }
+        & .Org {
+          & img {
+            width: ${(props) =>
+              props.isScrolled || props.isClicked || !props.isHomePage
+                ? "80px"
+                : "100px"};
+            margin-top: ${(props) =>
+              props.isScrolled || props.isClicked || !props.isHomePage
+                ? "1.5rem"
+                : "3rem"};
           }
         }
       }
+    }
+
+    & .BurgerContainer {
+      display: flex;
+    }
+
+    & .LinksContainer {
+      display: none;
     }
   }
 `;
@@ -209,7 +202,7 @@ const Nav = () => {
     };
   }, []);
 
-  const handleClick = () => {
+  const handleMobileNavClick = () => {
     setIsClicked(!isClicked);
   };
 
@@ -222,26 +215,15 @@ const Nav = () => {
           </Link>
         </div>
 
-        <div className="BurgerContainer" onClick={handleClick}>
-          <GiHamburgerMenu className="HamburgerIcon" />
+        <div className="BurgerContainer" onClick={handleMobileNavClick}>
+          {isClicked ? (
+            <HiX className="HamburgerIcon" />
+          ) : (
+            <GiHamburgerMenu className="HamburgerIcon" />
+          )}
         </div>
 
         <div className="LinksContainer">
-          <div className="DropLinkContainer">
-            <Link to="/membership" className="Link">
-              Medlemskap <AiOutlineDown className="Arrow" />
-            </Link>
-
-            <div className="DropContent">
-              <Link to={`/membership/information`} className="DropLink">
-                Information
-              </Link>
-
-              <Link to={`/membership/become-member`} className="DropLink">
-                Bli medlem!
-              </Link>
-            </div>
-          </div>
           <div className="DropLinkContainer">
             <Link to="/about" className="Link">
               Om ORG <AiOutlineDown className="Arrow" />
@@ -268,6 +250,39 @@ const Nav = () => {
               </Link>
             </div>
           </div>
+
+          <div className="DropLinkContainer">
+            <Link to="/membership" className="Link">
+              Medlemskap <AiOutlineDown className="Arrow" />
+            </Link>
+
+            <div className="DropContent">
+              <Link to={`/membership/information`} className="DropLink">
+                Information
+              </Link>
+
+              <Link to={`/membership/become-member`} className="DropLink">
+                Bli medlem!
+              </Link>
+            </div>
+          </div>
+
+          <div className="DropLinkContainer">
+            <Link to="/event" className="Link">
+              Event <AiOutlineDown className="Arrow" />
+            </Link>
+
+            <div className="DropContent">
+              <Link to="/event/upcomming-events" className="DropLink">
+                Kommande event
+              </Link>
+
+              <Link to="/event/past-events" className="DropLink">
+                Tidigare event
+              </Link>
+            </div>
+          </div>
+
           <div className="DropLinkContainer">
             <Link to="/" className="Link">
               Gaming <AiOutlineDown className="Arrow" />
@@ -283,26 +298,8 @@ const Nav = () => {
               </Link>
             </div>
           </div>
-          <div className="DropLinkContainer">
-            <Link to="/" className="Link">
-              Event <AiOutlineDown className="Arrow" />
-            </Link>
 
-            <div className="DropContent">
-              <Link to="/" className="DropLink">
-                Kommande event
-              </Link>
-
-              <Link to="/" className="DropLink">
-                Tidigare event
-              </Link>
-            </div>
-          </div>
-          <Link to="/" className="Link">
-            Gemenskap
-          </Link>
-
-          <Link to="/" className="Link">
+          <Link to="/contact" className="Link">
             Kontakt
           </Link>
         </div>

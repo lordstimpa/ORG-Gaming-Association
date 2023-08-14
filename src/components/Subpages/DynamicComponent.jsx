@@ -1,22 +1,28 @@
 import styled from "styled-components";
 import NavLinks from "./Sub-Information-NavLinks";
+import Keyboard from "../../assets/gamer.jpg";
 
 const Body = styled.div`
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   background: #eaeaea;
   color: #444444;
   display: grid;
-  grid-template-columns: 1fr 250px 850px 1fr;
-  grid-template-rows: 5em fit-content(100px) auto 5em;
+  grid-template-columns: 1fr 175px 875px 1fr;
+  grid-template-rows: 4rem fit-content(200px) auto 5em;
 
   // Title section
   & .Title {
-    grid-column: 2 / 4;
+    grid-column: 1 / 6;
     grid-row: 2 / 3;
-    color: #00d1cd;
-    border-bottom: 1px solid #00d1cd;
-    margin-bottom: 2rem;
+    background-image: url(${(props) => props.image});
+    background-size: cover;
+    background-position: center;
+    & h1 {
+      text-align: center;
+      font-size: 10vw;
+      color: #f30067;
+    }
   }
 
   // Info section
@@ -27,7 +33,8 @@ const Body = styled.div`
     grid-row: 3 / 4;
     height: fit-content;
     background: #eaeaea;
-    padding: 0 2em 2em 2em;
+    padding: 2em;
+    margin: 0 1rem;
     border-radius: 1rem;
 
     // General styling
@@ -84,13 +91,13 @@ const Body = styled.div`
   }
 
   @media only screen and (max-width: 900px) {
-    grid-template-rows: 5em fit-content(100px) fit-content(100px) auto 5em;
+    grid-template-rows: 4rem fit-content(100px) fit-content(100px) auto 5rem;
 
     & .Info {
       grid-column: 2 / 4;
       grid-row: 4 / 5;
       padding: 0;
-      font-size: 75%;
+      padding-top: 2rem;
 
       & .CardContainer {
         & .Card {
@@ -113,8 +120,7 @@ const Body = styled.div`
 
 const DynamicComponent = ({ contentComponent }) => {
   return (
-    <Body>
-      <img></img>
+    <Body image={Keyboard}>
       <NavLinks />
       {contentComponent}
     </Body>
