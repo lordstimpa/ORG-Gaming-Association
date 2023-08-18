@@ -69,6 +69,18 @@ const NavMobile = () => {
     <Body>
       <div className="Parent">
         <div className="Child">
+          <Link to="/latest-news" className="Link">
+            Senaste nytt!
+          </Link>
+        </div>
+
+        <div className="Child">
+          <Link to="/membership" className="Link">
+            Medlemskap
+          </Link>
+        </div>
+
+        <div className="Child">
           <Link to="/about" className="Link">
             Om ORG
           </Link>
@@ -97,22 +109,6 @@ const NavMobile = () => {
         </div>
 
         <div className="Child">
-          <Link to="/membership" className="Link">
-            Medlemskap
-          </Link>
-
-          <div className="GrandChild">
-            <Link to={`/membership/information`} className="DropLink">
-              Information
-            </Link>
-
-            <Link to={`/membership/become-member`} className="DropLink">
-              Bli medlem!
-            </Link>
-          </div>
-        </div>
-
-        <div className="Child">
           <Link to="/event" className="Link">
             Event
           </Link>
@@ -124,22 +120,6 @@ const NavMobile = () => {
 
             <Link to="/event/past-events" className="DropLink">
               Tidigare event
-            </Link>
-          </div>
-        </div>
-
-        <div className="Child">
-          <Link to="/" className="Link">
-            Gaming
-          </Link>
-
-          <div className="GrandChild">
-            <Link to="/" className="DropLink">
-              Counter Strike
-            </Link>
-
-            <Link to="/" className="DropLink">
-              Rocket League
             </Link>
           </div>
         </div>

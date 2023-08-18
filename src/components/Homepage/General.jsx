@@ -1,197 +1,151 @@
-import { useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FaHandPointDown } from "react-icons/fa";
-import Org from "../../assets/org-rasta.png";
+import Org from "../../assets/org.png";
+import OrgHotShot from "../../assets/orghotshot.png";
 
 const Body = styled.div`
-  width: 100%;
+  position: relative;
   min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 550px 550px 1fr;
+  grid-template-rows: 5rem fit-content(100px) 1fr 4rem;
   background: #eaeaea;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 
-  & .Parent1 {
-    display: flex;
-    justify-content: center;
-
-    & .PointerContainer {
-      position: absolute;
-      top: 92.5svh;
-      z-index: 1;
-
-      & .Pointer {
-        font-size: 2em;
-        color: #444444;
-        padding: 0.2em;
-        transition: 0.1s ease-in-out;
-
-        :hover {
-          cursor: pointer;
-          transform: scale(1.2);
-        }
-      }
-    }
-
-    & .Bubble {
-      position: absolute;
-      top: 90svh;
-      width: 300px;
-      height: 300px;
-      background: #eaeaea;
-      border-radius: 50%;
-      z-index: -1;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(${(props) => props.backgroundImg});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.3;
   }
 
-  & .LinkPage {
-    text-decoration: none;
-    color: #f30067;
-  }
-
-  & .Parent2 {
-    display: grid;
-    grid-template-columns: 1fr 600px 600px 1fr;
-    grid-template-rows: 4em repeat(2, auto) 4em;
-    grid-gap: 2em;
-    z-index: 3;
-
-    & .Text,
-    .Picture {
-      color: #444444;
-    }
-
-    & .Text {
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px,
-        rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-        rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-    }
+  & .Title {
+    z-index: 1;
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+    margin-bottom: 1rem;
 
     & h1 {
+      text-align: center;
       color: #f30067;
-      font-family: "Orbitron", Arial, Helvetica, sans-serif;
+      font-size: 5rem;
+    }
+  }
+
+  & .Text {
+    z-index: 1;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    margin: 1rem;
+
+    & div {
+      margin-bottom: 1rem;
     }
 
-    & .Text {
-      grid-column: 2 / 3;
-      grid-row: 2 / 5;
-    }
-
-    & .Text > div > * {
-      padding: 0.5rem;
-    }
-
-    & .Text > div:not(:last-child) {
+    & h2 {
       padding-bottom: 1rem;
-      border-bottom: 1px solid #f30067;
+      color: #f30067;
     }
 
-    & .Picture {
-      grid-column: 3 / 4;
-      grid-row: 2 / 4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    & p {
+      padding: 0.2rem 1rem;
+    }
 
-      & img {
-        width: 70%;
-        border-radius: 1em;
-        scale: calc(1.4);
+    & .LinkPage {
+      text-decoration: none;
+      font-weight: 600;
+      color: #444444;
+      padding: 0.2rem 1rem;
+
+      :hover {
+        color: #f30067;
       }
+    }
+  }
+
+  & .Picture {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    z-index: 1;
+    border: 2px solid #f30067;
+    border-radius: 2rem;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      object-fit: cover;
+      transform: scale(1.13);
     }
   }
 
   @media only screen and (max-width: 1170px) {
-    & .Parent1 {
-      display: none;
-    }
-
-    & .Parent2 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 6em 0 2em 0;
-
-      & .Text,
-      .Picture {
-        width: 80%;
-      }
-
-      & .Picture {
-        display: none;
-      }
-    }
   }
 `;
 
 const General = () => {
-  const ref = useRef(null);
-
-  const handleClick = () => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <Body ref={ref}>
-      <div className="Parent1">
-        <div className="PointerContainer">
-          <FaHandPointDown className="Pointer" onClick={handleClick} />
-        </div>
-
-        <div className="Bubble"></div>
+    <Body backgroundImg={Org}>
+      <div className="Title">
+        <h1>Allmänt om ORG</h1>
       </div>
 
-      <div className="Parent2">
-        <div className="Picture">
-          <img src={Org}></img>
+      <div className="Text">
+        <div>
+          <h2>Spelförening</h2>
+          <p>
+            ORG grundades år 2009 och har under en längre period endast bestått
+            av ett fåtal medlemmar som haft kul tillsammans. Nu har vi valt att
+            ta ORG till nästa nivå!
+          </p>
+          <p>
+            Genom att göra ORG till en äkta spelförening öppnar vi nu upp
+            portarna för fler medlemmar för att ta del av gemenskapen och allt
+            roligt som kommer längs resan.
+          </p>
+          <Link to="/about" className="LinkPage">
+            Mer om ORG!
+          </Link>
         </div>
-
-        <div className="Text">
-          <h1>Allmänt om ORG</h1>
-          <div>
-            <h2>Spelförening</h2>
-            <p>
-              ORG grundades år 2009 och har under en längre period endast
-              bestått av ett fåtal medlemmar som haft kul tillsammans. Nu har vi
-              valt att ta ORG till nästa nivå!
-            </p>
-            <p>
-              Genom att göra ORG till en äkta spelförening öppnar vi nu upp
-              portarna för fler medlemmar för att ta del av gemenskapen och allt
-              roligt som kommer längs resan.
-            </p>
-            <Link to="/about" className="LinkPage">
-              Mer om ORG!
-            </Link>
-          </div>
-          <div>
-            <h2>Medlemskap</h2>
-            <p>
-              Som gratismedlem så bidrar man till organisationen mer än vad man
-              tror. Med hjälp av statligt subventionerade bidrag så får
-              organisationen möjlighet till att anordna större event och
-              turneringar.
-            </p>
-            <p>
-              För att man som medlem ska kunna delta på event och turneringar så
-              behöver man betala en avgift på 150kr som täcker ett helt år av
-              evenemang som ORG har att erbjuda.
-            </p>
-            <Link to="/membership" className="LinkPage">
-              Mer om medlemskap!
-            </Link>
-          </div>
-          <div>
-            <h2>Event</h2>
-            <p>
-              Vi kommer att erhålla event och turneringar året om, framförallt
-              när majoriteten av medlemmarna har det ledigt från jobb och
-              studier.
-            </p>
-            <Link className="LinkPage">Mer om event!</Link>
-          </div>
+        <div>
+          <h2>Medlemskap</h2>
+          <p>
+            Som gratismedlem så bidrar man till organisationen mer än vad man
+            tror. Med hjälp av statligt subventionerade bidrag så får
+            organisationen möjlighet till att anordna större event och
+            turneringar.
+          </p>
+          <p>
+            För att man som medlem ska kunna delta på event och turneringar så
+            behöver man betala en avgift på 150kr som täcker ett helt år av
+            evenemang som ORG har att erbjuda.
+          </p>
+          <Link to="/membership" className="LinkPage">
+            Mer om medlemskap!
+          </Link>
         </div>
+        <div>
+          <h2>Event</h2>
+          <p>
+            Vi kommer att erhålla event och turneringar året om, framförallt när
+            majoriteten av medlemmarna har det ledigt från jobb och studier.
+          </p>
+          <Link to="/event" className="LinkPage">
+            Mer om event!
+          </Link>
+        </div>
+      </div>
+      <div className="Picture">
+        <img src={OrgHotShot}></img>
       </div>
     </Body>
   );

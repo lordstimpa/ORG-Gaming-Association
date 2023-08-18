@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { useState, useEffect, useRef } from "react";
 import Gamer from "../../assets/gamer.jpg";
 import Counter from "../../assets/keyboard.jpg";
-import { useState, useEffect } from "react";
+import { SlArrowDown } from "react-icons/sl";
 
 const Background = styled.div`
   position: fixed;
@@ -32,7 +33,6 @@ const Body = styled.div`
   }
 
   & .Title {
-    font-family: "Orbitron", Arial, Helvetica, sans-serif;
     text-align: center;
 
     h1 {
@@ -96,8 +96,14 @@ const Body = styled.div`
 `;
 
 const Hero = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // Click
+  const ref = useRef(null);
+  const handleClick = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
+  // Scroll
+  const [scrollPosition, setScrollPosition] = useState(0);
   const scrollThreshold = window.innerHeight;
   const backgroundImage = scrollPosition >= scrollThreshold ? Counter : Gamer;
 
@@ -114,7 +120,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <Body>
+    <Body ref={ref}>
       <Background backgroundImg={backgroundImage} />
 
       <div className="InfoCont">
@@ -132,8 +138,12 @@ const Hero = () => {
           </p>
         </div>
         <div className="Medlem">
-          <a href="https://ebas.sverok.se/blimedlem/25677">Bli medlem idag!</a>
+          <a href="https://ebas.sverok.se/blimedlem/25677">Bli medlem nu!</a>
         </div>
+      </div>
+
+      <div className="PointerContainer">
+        <SlArrowDown className="Pointer" onClick={handleClick} />
       </div>
     </Body>
   );

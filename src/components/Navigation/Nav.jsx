@@ -13,7 +13,9 @@ const Body = styled.div`
   height: 65px;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   background: ${(props) =>
-    props.isScrolled || props.isClicked || !props.isHomePage
+    props.isScrolled ||
+    props.isClicked ||
+    (!props.isHomePage && props.currentPath !== "/latest-news")
       ? "rgb(0, 0, 0)"
       : "none"};
   z-index: 2;
@@ -32,7 +34,9 @@ const Body = styled.div`
       align-items: center;
       margin-left: 2rem;
       margin-top: ${(props) =>
-        props.isScrolled || props.isClicked || !props.isHomePage
+        props.isScrolled ||
+        props.isClicked ||
+        (!props.isHomePage && props.currentPath !== "/latest-news")
           ? "0"
           : "2rem"};
 
@@ -40,15 +44,21 @@ const Body = styled.div`
         z-index: 1;
         & img {
           width: ${(props) =>
-            props.isScrolled || props.isClicked || !props.isHomePage
+            props.isScrolled ||
+            props.isClicked ||
+            (!props.isHomePage && props.currentPath !== "/latest-news")
               ? "80px"
               : "200px"};
           margin-top: ${(props) =>
-            props.isScrolled || props.isClicked || !props.isHomePage
+            props.isScrolled ||
+            props.isClicked ||
+            (!props.isHomePage && props.currentPath !== "/latest-news")
               ? "1.5rem"
               : "10rem"};
           clip-path: ${(props) =>
-            props.isScrolled || props.isClicked || !props.isHomePage
+            props.isScrolled ||
+            props.isClicked ||
+            (!props.isHomePage && props.currentPath !== "/latest-news")
               ? "inset(0 0 1.3rem 0)"
               : "inset(0 0 0 0)"};
         }
@@ -155,11 +165,15 @@ const Body = styled.div`
         & .Org {
           & img {
             width: ${(props) =>
-              props.isScrolled || props.isClicked || !props.isHomePage
+              props.isScrolled ||
+              props.isClicked ||
+              (!props.isHomePage && props.currentPath !== "/latest-news")
                 ? "80px"
                 : "100px"};
             margin-top: ${(props) =>
-              props.isScrolled || props.isClicked || !props.isHomePage
+              props.isScrolled ||
+              props.isClicked ||
+              (!props.isHomePage && props.currentPath !== "/latest-news")
                 ? "1.5rem"
                 : "3rem"};
           }
@@ -181,6 +195,7 @@ const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const location = useLocation();
+  const currentPath = location.pathname;
   const isHomePage = location.pathname === "/";
 
   useEffect(() => {
@@ -207,7 +222,12 @@ const Nav = () => {
   };
 
   return (
-    <Body isScrolled={isScrolled} isClicked={isClicked} isHomePage={isHomePage}>
+    <Body
+      isScrolled={isScrolled}
+      isClicked={isClicked}
+      isHomePage={isHomePage}
+      currentPath={currentPath}
+    >
       <div className="First">
         <div className="NameContainer">
           <Link to="/" className="Org">
@@ -224,6 +244,14 @@ const Nav = () => {
         </div>
 
         <div className="LinksContainer">
+          <Link to="/latest-news" className="Link">
+            Senaste nytt!
+          </Link>
+
+          <Link to="/membership" className="Link">
+            Medlemskap
+          </Link>
+
           <div className="DropLinkContainer">
             <Link to="/about" className="Link">
               Om ORG <AiOutlineDown className="Arrow" />
@@ -252,22 +280,6 @@ const Nav = () => {
           </div>
 
           <div className="DropLinkContainer">
-            <Link to="/membership" className="Link">
-              Medlemskap <AiOutlineDown className="Arrow" />
-            </Link>
-
-            <div className="DropContent">
-              <Link to={`/membership/information`} className="DropLink">
-                Information
-              </Link>
-
-              <Link to={`/membership/become-member`} className="DropLink">
-                Bli medlem!
-              </Link>
-            </div>
-          </div>
-
-          <div className="DropLinkContainer">
             <Link to="/event" className="Link">
               Event <AiOutlineDown className="Arrow" />
             </Link>
@@ -279,22 +291,6 @@ const Nav = () => {
 
               <Link to="/event/past-events" className="DropLink">
                 Tidigare event
-              </Link>
-            </div>
-          </div>
-
-          <div className="DropLinkContainer">
-            <Link to="/" className="Link">
-              Gaming <AiOutlineDown className="Arrow" />
-            </Link>
-
-            <div className="DropContent">
-              <Link to="/" className="DropLink">
-                Counter Strike
-              </Link>
-
-              <Link to="/" className="DropLink">
-                Rocket League
               </Link>
             </div>
           </div>

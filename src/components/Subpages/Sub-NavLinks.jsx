@@ -3,7 +3,6 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AiOutlineDown } from "react-icons/ai";
 
-// Link section
 const Body = styled.div`
   grid-column: 2 / 3;
   grid-row: 3 / 4;
@@ -11,6 +10,10 @@ const Body = styled.div`
 
   & .Links {
     margin-bottom: 2rem;
+
+    & > div {
+      margin-bottom: 1rem;
+    }
 
     & h2 {
       margin-bottom: 1rem;
@@ -94,7 +97,6 @@ const Body = styled.div`
 const NavLinks = () => {
   const [dropMenu1, setDropMenu1] = useState(false);
   const [dropMenu2, setDropMenu2] = useState(false);
-  const [dropMenu3, setDropMenu3] = useState(false);
 
   const handleDrop1 = () => {
     setDropMenu1(!dropMenu1);
@@ -104,16 +106,24 @@ const NavLinks = () => {
     setDropMenu2(!dropMenu2);
   };
 
-  const handleDrop3 = () => {
-    setDropMenu3(!dropMenu3);
-  };
-
   return (
     <Body dropMenu1={dropMenu1} dropMenu2={dropMenu2}>
       <div className="Links">
-        <h2>Länkar</h2>
+        <div>
+          <h2>Länkar</h2>
+        </div>
 
         <div className="LinkContainer">
+          <div className="MainLinkContainer">
+            <NavLink
+              to={`/membership`}
+              className="MainLink"
+              activeclassname="active"
+            >
+              Medlemskap
+            </NavLink>
+          </div>
+
           <div className="MainLinkContainer">
             <NavLink
               to={`/about`}
@@ -175,41 +185,6 @@ const NavLinks = () => {
 
           <div className="MainLinkContainer">
             <NavLink
-              to={`/membership`}
-              className="MainLink"
-              activeclassname="active"
-            >
-              Medlemskap
-            </NavLink>
-            <AiOutlineDown
-              className="Arrow"
-              id="Arrow2"
-              onClick={handleDrop2}
-            />
-          </div>
-
-          {dropMenu2 && (
-            <div className="DropDownLinkContainer">
-              <NavLink
-                to={`/membership/information`}
-                className="Link"
-                activeclassname="active"
-              >
-                Information
-              </NavLink>
-
-              <NavLink
-                to={`/membership/become-member`}
-                className="Link"
-                activeclassname="active"
-              >
-                Bli Medlem
-              </NavLink>
-            </div>
-          )}
-
-          <div className="MainLinkContainer">
-            <NavLink
               to={`/event`}
               className="MainLink"
               activeclassname="active"
@@ -219,11 +194,11 @@ const NavLinks = () => {
             <AiOutlineDown
               className="Arrow"
               id="Arrow2"
-              onClick={handleDrop3}
+              onClick={handleDrop2}
             />
           </div>
 
-          {dropMenu3 && (
+          {dropMenu2 && (
             <div className="DropDownLinkContainer">
               <NavLink
                 to={`/event/upcomming-events`}

@@ -5,6 +5,8 @@ import Nav from "./components/Navigation/Nav";
 import Hero from "./components/Homepage/Hero";
 import General from "./components/Homepage/General";
 import More from "./components/Homepage/More";
+// Latest news
+import Posts from "./components/Subpages/Sub-Posts";
 // Information Subpage
 import DynamicComponent from "./components/Subpages/DynamicComponent";
 // About ORG
@@ -16,12 +18,11 @@ import Statutes from "./components/Subpages/SubSub-Statutes";
 import AnnualReports from "./components/Subpages/SubSub-AnnualReports";
 // Membership
 import Membership from "./components/Subpages/Sub-Membership";
-import MembershipInfo from "./components/Subpages/SubSub-MembershipInfo";
-import BecomeMember from "./components/Subpages/SubSub-BecomeMember";
 // Event
 import Event from "./components/Subpages/Sub-Event";
 import UpcommingEvents from "./components/Subpages/SubSub-UpcommingEvents";
 import PastEvents from "./components/Subpages/SubSub-PastEvents";
+import EventInfo from "./components/Subpages/SubSub-EventInfo";
 // Contact
 import Contact from "./components/Subpages/Sub-Contact";
 // Footer
@@ -45,6 +46,8 @@ function App() {
               </div>
             }
           />
+
+          <Route exact path="/latest-news" element={<Posts />} />
 
           <Route
             exact
@@ -90,18 +93,6 @@ function App() {
 
           <Route
             exact
-            path="/membership/information"
-            element={<DynamicComponent contentComponent={<MembershipInfo />} />}
-          />
-
-          <Route
-            exact
-            path="/membership/become-member"
-            element={<DynamicComponent contentComponent={<BecomeMember />} />}
-          />
-
-          <Route
-            exact
             path="/event"
             element={<DynamicComponent contentComponent={<Event />} />}
           />
@@ -113,11 +104,20 @@ function App() {
               <DynamicComponent contentComponent={<UpcommingEvents />} />
             }
           />
+          <Route
+            path="/upcomming-events/:id"
+            element={<DynamicComponent contentComponent={<EventInfo />} />}
+          />
 
           <Route
             exact
             path="/event/past-events"
             element={<DynamicComponent contentComponent={<PastEvents />} />}
+          />
+
+          <Route
+            path="/past-events/:id"
+            element={<DynamicComponent contentComponent={<EventInfo />} />}
           />
 
           <Route

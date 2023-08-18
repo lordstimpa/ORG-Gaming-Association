@@ -39,9 +39,11 @@ const Body = styled.div`
 
       & p {
         font-size: 0.8rem;
+        color: #eaeaea;
       }
 
       & .Icon {
+        color: #eaeaea;
         font-size: 8rem;
       }
     }

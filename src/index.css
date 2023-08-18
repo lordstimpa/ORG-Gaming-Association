@@ -8,3 +8,16 @@
 * {
   margin: 0;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Orbitron", Arial, Helvetica, sans-serif;
+  color: #444444;
+}
+
+p {
+  color: #444444;
+}
