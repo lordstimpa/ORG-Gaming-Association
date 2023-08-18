@@ -10,7 +10,7 @@ const Body = styled.div`
   color: #444444;
   display: grid;
   grid-template-columns: 1fr 175px 875px 175px 1fr;
-  grid-template-rows: 4rem fit-content(200px) auto 5em;
+  grid-template-rows: 4rem 250px auto 5em;
 
   // Title section
   & .Title {
@@ -19,11 +19,16 @@ const Body = styled.div`
     background-image: url(${(props) => props.image});
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     & h1 {
       text-align: center;
-      font-size: 10vw;
+      font-size: 4rem;
       color: #f30067;
+      letter-spacing: 2rem;
+      text-shadow: 1px 1px #eaeaea;
     }
   }
 
@@ -60,6 +65,16 @@ const Body = styled.div`
 
     & ol {
       padding: 0.2rem 3.2rem;
+    }
+
+    // Error / Loading / Notfound
+    & .Loading,
+    .Error,
+    .NotFound {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
     }
 
     // Member
@@ -130,41 +145,50 @@ const Body = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 1;
-        width: 100%;
-        background: #eaeaead6;
-        padding: 1rem;
 
         & h2 {
           color: #f30067;
-          font-size: 2rem;
+          text-shadow: 1px 1px #eaeaea;
+          font-size: 3rem;
         }
 
         & p {
-          color: #444444;
+          color: #eaeaea;
+          font-size: 1.5rem;
         }
       }
 
       & img {
+        filter: blur(5px);
+        transition: all 0.2s ease-in-out;
       }
 
       :hover {
         cursor: pointer;
         transform: scale(1.02);
         box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 45px;
+
+        & img {
+          filter: blur(0px);
+        }
       }
     }
   }
 
   @media only screen and (max-width: 1200px) {
-    grid-template-columns: auto 20% 70% auto;
+    grid-template-columns: 1rem auto 70% auto 1rem;
+
+    & .Info {
+      grid-column: 3 / 5;
+    }
   }
 
   @media only screen and (max-width: 900px) {
-    grid-template-rows: 4rem fit-content(100px) fit-content(100px) auto 5rem;
+    grid-template-rows: 4rem 250px fit-content(100px) auto 5rem;
 
     & .Info {
       grid-column: 2 / 4;
-      grid-row: 4 / 5;
+      grid-row: 3 / 4;
       padding: 0;
       padding-top: 2rem;
 

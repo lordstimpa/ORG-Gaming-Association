@@ -105,7 +105,7 @@ function App() {
             }
           />
           <Route
-            path="/upcomming-events/:id"
+            path="/event/upcomming-events/:id"
             element={<DynamicComponent contentComponent={<EventInfo />} />}
           />
 
@@ -116,7 +116,7 @@ function App() {
           />
 
           <Route
-            path="/past-events/:id"
+            path="/event/past-events/:id"
             element={<DynamicComponent contentComponent={<EventInfo />} />}
           />
 

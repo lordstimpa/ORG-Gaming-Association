@@ -9,18 +9,23 @@ const Body = styled.div`
   background-size: cover;
   background-position: center;
   display: grid;
-  grid-template-columns: 1fr 1100px 1fr;
-  grid-template-rows: 4rem fit-content(200px) auto 5em;
+  grid-template-columns: 1fr 1200px 1fr;
+  grid-template-rows: 4rem 250px auto 5em;
 
   & .Title {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     & h1 {
       text-align: center;
-      font-size: 5rem;
+      font-size: 4rem;
       color: #f30067;
+      letter-spacing: 2rem;
+      text-shadow: 1px 1px #eaeaea;
     }
   }
 
@@ -44,7 +49,8 @@ const Body = styled.div`
         color: #eaeaea;
         padding-bottom: 1rem;
         margin-bottom: 1rem;
-        border-bottom: 1px solid #f30067;
+        border-bottom: 2px solid #f30067;
+        box-shadow: 0px 1px #eaeaea;
       }
 
       & p {
@@ -59,23 +65,31 @@ const Posts = () => {
     data: response,
     isError,
     isLoading,
-  } = API("https://localhost:7296/get-all-posts-company-page");
+  } = API("https://localhost:7296/api/Posts/all-posts");
 
-  const feedPosts = response?.data || [];
+  const formatMessage = (message) => {
+    return message.replace(/\n/g, "<br>");
+  };
 
   return (
     <Body backgroundImg={Gamer}>
       <div className="Title">
-        <h1>Senaste nytt från ORG!</h1>
+        <h1>SENASTE NYTT!</h1>
       </div>
       <div className="PostOuterContainer">
         {isLoading && <p className="loading">Laddar inlägg...</p>}
         {isError && <p className="error">Inga inlägg hittades.</p>}
-        {feedPosts &&
-          feedPosts.map((post) => (
+        {response &&
+          response.map((post) => (
             <div className="PostInnerContainer" key={post.id}>
-              <h2>{post.created_time}</h2>
-              <p>{post.message || post.story}</p>
+              <h2>
+                {post.start_date} - {post.start_time}
+              </h2>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: formatMessage(post.message || post.story),
+                }}
+              />
             </div>
           ))}
       </div>

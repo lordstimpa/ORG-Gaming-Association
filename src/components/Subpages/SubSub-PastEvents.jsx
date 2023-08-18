@@ -6,7 +6,7 @@ const PastEvents = () => {
     data: events,
     isError,
     isLoading,
-  } = API("https://localhost:7296/get-all-past-events-company-page");
+  } = API("https://localhost:7296/api/Events/all-past-events");
 
   return (
     <>
@@ -17,24 +17,35 @@ const PastEvents = () => {
         <div>
           <h2>Tidigare event</h2>
         </div>
-        {isLoading && <p className="loading">Laddar tidigare event...</p>}
-        {isError && <p className="error">Inga tidigare event hittades.</p>}
-        {events.map(
-          (
-            event // Use parentheses to enclose the JSX
-          ) => (
-            <Link to={event.id} key={event.id}>
-              <div className="EventContainer">
-                <div className="TextContainer">
-                  <h2>{event.name}</h2>
-                  <p>Datum: {event.start_date}</p>
-                  <p>Tid: {event.start_time}</p>
-                </div>
-                <img src={event.cover_source} alt="Event Cover" />
-              </div>
-            </Link>
-          )
+        {isLoading && (
+          <div className="Loading">
+            <p>Laddar tidigare event..</p>
+          </div>
         )}
+        {isError && (
+          <div className="Error">
+            <p>Ett fel inträffade vid hämtning av tidigare event.</p>
+          </div>
+        )}
+        {!isLoading && !isError && events.length === 0 && (
+          <div className="NotFound">
+            <p>Inga tidigare event hittades.</p>
+          </div>
+        )}
+        {events.map((event) => (
+          <Link
+            to={`/event/past-events/${event.id}`}
+            key={event.id}
+            className="EventContainer"
+          >
+            <div className="TextContainer">
+              <h2>{event.name}</h2>
+              <p>{event.start_date}</p>
+              <p>{event.start_time}</p>
+            </div>
+            <img src={event.cover_source} alt="Event Cover" />
+          </Link>
+        ))}
       </div>
     </>
   );

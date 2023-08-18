@@ -7,7 +7,7 @@ const EventInfo = () => {
     data: eventInfo,
     isError,
     isLoading,
-  } = API("https://localhost:7296/get-all-post-dates-company-page");
+  } = API(`https://localhost:7296/api/Events/all-event-information/${id}`);
 
   return (
     <>
@@ -16,15 +16,31 @@ const EventInfo = () => {
       </div>
       <div className="Info">
         <div>
-          <h2>Event Information</h2>
+          <h2>Event</h2>
         </div>
-        {isLoading && <p className="loading">Laddar event information...</p>}
-        {isError && <p className="error">Ingen event information hittades.</p>}
-        {eventInfo.map((info) => (
-          <div>
-            <p></p>
+        {isLoading && (
+          <div className="Loading">
+            <p>Laddar event information...</p>
           </div>
-        ))}
+        )}
+        {isError && (
+          <div className="Error">
+            <p>Ingen event information hittades.</p>
+          </div>
+        )}
+        {eventInfo && (
+          <>
+            <div>
+              <h4>{eventInfo.name}</h4>
+            </div>
+            <div>
+              <p>
+                {eventInfo.start_date} - {eventInfo.start_time}
+              </p>
+              <p>{eventInfo.description}</p>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

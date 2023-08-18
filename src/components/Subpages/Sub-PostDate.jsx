@@ -18,11 +18,20 @@ const Body = styled.div`
       text-decoration: none;
       color: #444444;
       width: fit-content;
+      margin-bottom: 1rem;
+      padding: 0.6rem;
+      border-radius: 0.5rem;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
       :hover {
         color: #f30067;
       }
     }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    display: none;
   }
 `;
 
@@ -31,12 +40,12 @@ const PostDate = () => {
     data: datesPosted,
     isError,
     isLoading,
-  } = API("https://localhost:7296/get-all-post-dates-company-page");
+  } = API("https://localhost:7296/api/Posts/all-post-dates");
 
   return (
     <Body>
       <div className="Links">
-        <h2>Inlägg</h2>
+        <h2>Senaste nytt</h2>
       </div>
       <div className="DateLinks">
         {isLoading && <p className="loading">Laddar inlägg...</p>}
