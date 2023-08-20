@@ -25,6 +25,10 @@ import PastEvents from "./components/Subpages/SubSub-PastEvents";
 import EventInfo from "./components/Subpages/SubSub-EventInfo";
 // Contact
 import Contact from "./components/Subpages/Sub-Contact";
+// Legal
+import TermsOfService from "./components/Legal/TermsOfService";
+import PrivacyNotice from "./components/Legal/PrivacyNotice";
+import CookiePolicy from "./components/Legal/CookiePolicy";
 // Footer
 import Footer from "./components/Footer/Footer";
 
@@ -126,6 +130,24 @@ function App() {
             exact
             path="/contact"
             element={<DynamicComponent contentComponent={<Contact />} />}
+          />
+
+          <Route
+            exact
+            path="/terms-of-service"
+            element={<DynamicComponent contentComponent={<TermsOfService />} />}
+          />
+
+          <Route
+            exact
+            path="/privacy-notice"
+            element={<DynamicComponent contentComponent={<PrivacyNotice />} />}
+          />
+
+          <Route
+            exact
+            path="/cookie-policy"
+            element={<DynamicComponent contentComponent={<CookiePolicy />} />}
           />
         </Routes>
 
