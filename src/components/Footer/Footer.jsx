@@ -63,6 +63,14 @@ const Body = styled.div`
     align-items: center;
 
     & .Container1 {
+      background: #000;
+
+      & > div:first-of-type {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
       & .Link {
         margin: 2rem;
         color: #eaeaea7d;
@@ -71,6 +79,48 @@ const Body = styled.div`
 
         :hover {
           color: #eaeaea;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    & .MainContainer1 {
+      flex-direction: column;
+      align-items: center;
+
+      & .Container1 {
+        margin: 2rem;
+      }
+
+      & .Container2 {
+        margin: 1rem 2rem;
+
+        & div:first-of-type {
+          display: flex;
+          justify-content: space-evenly;
+          margin: 0;
+
+          & a {
+            margin: 0;
+          }
+        }
+
+        & div:last-of-type {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-right: 0;
+        }
+      }
+    }
+
+    & .MainContainer2 {
+      & .Container1 {
+        & > div:first-of-type {
+          & .Link {
+            margin: 0.3rem;
+          }
         }
       }
     }
@@ -114,7 +164,7 @@ const Footer = () => {
               Integritetspolicy
             </Link>
             <Link to="/cookie-policy" className="Link">
-              Cookie Policy
+              Cookie-Policy
             </Link>
           </div>
         </div>

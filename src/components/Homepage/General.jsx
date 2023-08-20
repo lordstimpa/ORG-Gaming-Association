@@ -89,6 +89,19 @@ const Body = styled.div`
   }
 
   @media only screen and (max-width: 1170px) {
+    grid-template-columns: 1fr 95% 1fr;
+
+    & .Picture {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 770px) {
+    & .Title {
+      & h1 {
+        font-size: 10vw;
+      }
+    }
   }
 `;
 

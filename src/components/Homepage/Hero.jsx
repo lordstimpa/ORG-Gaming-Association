@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
+import { SlArrowDown } from "react-icons/sl";
 import Gamer from "../../assets/gamer.jpg";
 import Counter from "../../assets/keyboard.jpg";
-import { SlArrowDown } from "react-icons/sl";
 
 const Background = styled.div`
   position: fixed;
@@ -21,6 +21,7 @@ const Body = styled.div`
   width: 100%;
   height: 100svh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -57,11 +58,31 @@ const Body = styled.div`
     a {
       width: fit-content;
       color: #eaeaea;
-      background: #000;
       border-radius: 2em;
       border: 2px solid #f30067;
       padding: 0.5em 5em;
       text-decoration: none;
+      transition: 0.2s ease-in-out;
+
+      :hover {
+        cursor: pointer;
+        background: #f30067;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  & .PointerContainer {
+    position: absolute;
+    bottom: 0;
+    margin: 2rem;
+
+    & .Pointer {
+      color: #eaeaea;
+      font-size: 1.5rem;
+      padding: 0.6rem;
+      border: 2px solid #f30067;
+      border-radius: 50%;
       transition: 0.2s ease-in-out;
 
       :hover {
