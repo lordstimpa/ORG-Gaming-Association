@@ -49,6 +49,14 @@ function App() {
 
           <Route exact path="/latest-news" element={<Posts />} />
 
+          <Route path="/latest-news/:postId" element={<Posts />} />
+
+          <Route
+            exact
+            path="/membership"
+            element={<DynamicComponent contentComponent={<Membership />} />}
+          />
+
           <Route
             exact
             path="/about"
@@ -83,12 +91,6 @@ function App() {
             exact
             path="/about/annual-reports"
             element={<DynamicComponent contentComponent={<AnnualReports />} />}
-          />
-
-          <Route
-            exact
-            path="/membership"
-            element={<DynamicComponent contentComponent={<Membership />} />}
           />
 
           <Route

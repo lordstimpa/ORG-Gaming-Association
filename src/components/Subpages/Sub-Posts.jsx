@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import API from "../API/API";
 import Gamer from "../../assets/gamer.jpg";
 import Loading from "../Subpages/Loading";
@@ -78,6 +80,9 @@ const Body = styled.div`
 `;
 
 const Posts = () => {
+  const { postId } = useParams();
+  const navigate = useNavigate();
+
   const {
     data: response,
     isError,
@@ -87,6 +92,15 @@ const Posts = () => {
   const formatMessage = (message) => {
     return message.replace(/\n/g, "<br>");
   };
+
+  useEffect(() => {
+    if (!isLoading && response) {
+      const postElement = document.getElementById(postId);
+      if (postElement) {
+        postElement.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }, [postId, navigate, isLoading, response]);
 
   return (
     <Body backgroundImg={Gamer}>
@@ -111,7 +125,7 @@ const Posts = () => {
         )}
         {response &&
           response.map((post) => (
-            <div className="PostInnerContainer" key={post.id}>
+            <div className="PostInnerContainer" key={post.id} id={post.id}>
               <h2>
                 {post.start_date} - {post.start_time}
               </h2>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import {
   PiComputerTower,
   PiUsersThree,
@@ -13,14 +14,15 @@ const Body = styled.div`
   justify-content: center;
 
   & .Parent {
+    margin: 4rem 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
 
     & .Child {
-      height: 250px;
       width: 250px;
+      height: 275px;
       border-radius: 2rem;
       padding: 2rem;
       margin: 2rem;
@@ -28,6 +30,14 @@ const Body = styled.div`
       backdrop-filter: blur(25px);
       background: rgba(0, 0, 0, 0.4);
       text-align: center;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+
+      :hover {
+        cursor: pointer;
+        transform: scale(1.02);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 45px;
+      }
 
       & h2 {
         color: #f30067;
@@ -38,7 +48,7 @@ const Body = styled.div`
       }
 
       & p {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: #eaeaea;
       }
 
@@ -64,7 +74,7 @@ const More = () => {
   return (
     <Body>
       <div className="Parent">
-        <div className="Child">
+        <Link className="Child" to="/event">
           <div>
             <PiComputerTower className="Icon" />
             <h2>LAN</h2>
@@ -73,8 +83,8 @@ const More = () => {
               härlig träff med fokus på spel och roligheter!
             </p>
           </div>
-        </div>
-        <div className="Child">
+        </Link>
+        <Link className="Child" to="/event">
           <div>
             <PiTrophy className="Icon" />
             <h2>Turneringar</h2>
@@ -83,8 +93,8 @@ const More = () => {
               olika populära spel!
             </p>
           </div>
-        </div>
-        <div className="Child">
+        </Link>
+        <a className="Child" href="https://discord.gg/8JS23pMX">
           <div>
             <PiGlobe className="Icon" />
             <h2>Online</h2>
@@ -93,8 +103,8 @@ const More = () => {
               nätter!
             </p>
           </div>
-        </div>
-        <div className="Child">
+        </a>
+        <Link className="Child" to="/membership">
           <div>
             <PiUsersThree className="Icon" />
             <h2>Gemenskap</h2>
@@ -102,7 +112,7 @@ const More = () => {
               Lär känna nya spelintresserade nördar och få livslånga vänner!
             </p>
           </div>
-        </div>
+        </Link>
       </div>
     </Body>
   );

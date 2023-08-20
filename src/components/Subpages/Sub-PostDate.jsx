@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import API from "../API/API";
 import Loading from "../Subpages/Loading";
 
@@ -74,9 +74,13 @@ const PostDate = () => {
           </div>
         )}
         {datesPosted.map((post) => (
-          <Link key={post.id} className="Link">
+          <RouterLink
+            to={`/latest-news/${post.id}`}
+            key={post.id}
+            className="Link"
+          >
             {post.created_date}
-          </Link>
+          </RouterLink>
         ))}
       </div>
     </Body>
