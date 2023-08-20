@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import API from "../API/API";
 import Gamer from "../../assets/gamer.jpg";
+import Loading from "../Subpages/Loading";
 
 const Body = styled.div`
   min-height: 100svh;
@@ -36,7 +37,23 @@ const Body = styled.div`
     flex-direction: column;
     align-items: center;
 
-    & .PostInnerContainer {
+    // Error / Loading / Notfound
+    & .Loading,
+    .Error,
+    .NotFound {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & p {
+        color: #eaeaea;
+      }
+    }
+
+    & .PostInnerContainer,
+    .Loading,
+    .Error,
+    .NotFound {
       width: 750px;
       height: fit-content;
       border-radius: 2em;
@@ -77,8 +94,21 @@ const Posts = () => {
         <h1>SENASTE NYTT!</h1>
       </div>
       <div className="PostOuterContainer">
-        {isLoading && <p className="loading">Laddar inlägg...</p>}
-        {isError && <p className="error">Inga inlägg hittades.</p>}
+        {isLoading && (
+          <div className="Loading">
+            <Loading />
+          </div>
+        )}
+        {isError && (
+          <div className="Error">
+            <p>Ett fel inträffade vid hämtning av inlägg.</p>
+          </div>
+        )}
+        {!isLoading && !isError && response.length === 0 && (
+          <div className="NotFound">
+            <p>Inga inlägg hittades.</p>
+          </div>
+        )}
         {response &&
           response.map((post) => (
             <div className="PostInnerContainer" key={post.id}>

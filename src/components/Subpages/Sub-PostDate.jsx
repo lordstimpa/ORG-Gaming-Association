@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import API from "../API/API";
+import Loading from "../Subpages/Loading";
 
 const Body = styled.div`
   grid-column: 4 / 5;
@@ -28,6 +29,15 @@ const Body = styled.div`
         color: #f30067;
       }
     }
+
+    & .Loading,
+    .Error,
+    .NotFound {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
+    }
   }
 
   @media only screen and (max-width: 1200px) {
@@ -48,8 +58,21 @@ const PostDate = () => {
         <h2>Senaste nytt</h2>
       </div>
       <div className="DateLinks">
-        {isLoading && <p className="loading">Laddar inlägg...</p>}
-        {isError && <p className="error">Inga inlägg hittades.</p>}
+        {isLoading && (
+          <div className="Loading">
+            <Loading />
+          </div>
+        )}
+        {isError && (
+          <div className="Error">
+            <p>Ett fel inträffade vid hämtning av senaste nytt.</p>
+          </div>
+        )}
+        {!isLoading && !isError && datesPosted.length === 0 && (
+          <div className="NotFound">
+            <p>Inga inlägg hittades.</p>
+          </div>
+        )}
         {datesPosted.map((post) => (
           <Link key={post.id} className="Link">
             {post.created_date}

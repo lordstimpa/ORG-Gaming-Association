@@ -74,7 +74,6 @@ const Body = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100px;
     }
 
     // Member
@@ -89,6 +88,7 @@ const Body = styled.div`
         border-radius: 2em;
         border: 2px solid #f30067;
         padding: 0.5em 5em;
+        margin: 1rem;
         text-decoration: none;
         transition: 0.2s ease-in-out;
 
@@ -128,6 +128,12 @@ const Body = styled.div`
     }
 
     // Event
+    & .EventHeader {
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem;
+    }
+
     & .EventContainer {
       position: relative;
       display: flex;

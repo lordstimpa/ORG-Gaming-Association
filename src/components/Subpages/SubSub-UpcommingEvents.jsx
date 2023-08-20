@@ -1,5 +1,6 @@
 import API from "../API/API";
 import { Link } from "react-router-dom";
+import Loading from "../Subpages/Loading";
 
 const PastEvents = () => {
   const {
@@ -19,7 +20,7 @@ const PastEvents = () => {
         </div>
         {isLoading && (
           <div className="Loading">
-            <p>Laddar kommande event...</p>
+            <Loading />
           </div>
         )}
         {isError && (
