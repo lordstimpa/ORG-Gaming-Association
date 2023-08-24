@@ -22,8 +22,8 @@ const Board = () => {
           <div className="Card">
             <img src={Silhouette}></img>
             <h2>Vice Ordförande</h2>
-            <p>Rasmus Andersson</p>
-            <p>example.mail@hotmail.com</p>
+            <p>Rasmus Asplund</p>
+            <p>orgrasmus@hotmail.com</p>
           </div>
           <div className="Card">
             <img src={Silhouette}></img>

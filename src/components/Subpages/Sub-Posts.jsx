@@ -69,11 +69,41 @@ const Body = styled.div`
         padding-bottom: 1rem;
         margin-bottom: 1rem;
         border-bottom: 2px solid #f30067;
-        box-shadow: 0px 1px #eaeaea;
       }
 
       & p {
         color: #eaeaea;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1500px) {
+    grid-template-columns: 1fr 95% 1fr;
+
+    & .Title {
+      & h1 {
+        letter-spacing: normal;
+      }
+    }
+
+    & .PostOuterContainer {
+      & .PostInnerContainer,
+      .Loading,
+      .Error,
+      .NotFound {
+        width: 90%;
+        padding: 1rem 1rem 2rem 1rem;
+        margin: 1rem 0 1rem 0;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 720px) {
+    & .Title {
+      padding: 1rem 0 1rem 0;
+      & h1 {
+        letter-spacing: normal;
+        font-size: 9vw;
       }
     }
   }

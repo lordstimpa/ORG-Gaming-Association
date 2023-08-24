@@ -40,7 +40,7 @@ const Body = styled.div`
     }
   }
 
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1280px) {
     display: none;
   }
 `;

@@ -93,9 +93,6 @@ const Body = styled.div`
     }
   }
 
-  @media only screen and (max-width: 1200px) {
-  }
-
   @media only screen and (max-width: 900px) {
     & .InfoCont {
       padding: 1em;
@@ -110,9 +107,6 @@ const Body = styled.div`
     & .Medlem > a {
       font-size: 0.8rem;
     }
-  }
-
-  @media only screen and (max-width: 680px) {
   }
 `;
 

@@ -23,12 +23,13 @@ const Body = styled.div`
     & .Child {
       width: 250px;
       height: 275px;
-      border-radius: 2rem;
       padding: 2rem;
       margin: 2rem;
       color: #eaeaea;
       backdrop-filter: blur(25px);
       background: rgba(0, 0, 0, 0.4);
+      border-radius: 2rem;
+      border: 2px solid rgba(243, 0, 103, 0);
       text-align: center;
       text-decoration: none;
       transition: all 0.2s ease-in-out;
@@ -36,6 +37,7 @@ const Body = styled.div`
       :hover {
         cursor: pointer;
         transform: scale(1.02);
+        border: 2px solid rgba(243, 0, 103, 1);
         box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 45px;
       }
 
@@ -60,13 +62,11 @@ const Body = styled.div`
   }
 
   @media only screen and (max-width: 1170px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     .Parent {
-      width: 90%;
     }
+  }
+
+  @media only screen and (max-width: 1560px) {
   }
 `;
 
@@ -79,8 +79,8 @@ const More = () => {
             <PiComputerTower className="Icon" />
             <h2>LAN</h2>
             <p>
-              Delta på våra LAN-event där vi samlar alla våra medlemmar för en
-              härlig träff med fokus på spel och roligheter!
+              Delta på LAN-event där vi samlar alla våra medlemmar med fokus på
+              spel och roligheter!
             </p>
           </div>
         </Link>

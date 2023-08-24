@@ -73,6 +73,7 @@ const Body = styled.div`
 
       & .Link {
         margin: 2rem;
+        margin-bottom: 0;
         color: #eaeaea7d;
         text-decoration: none;
         transition: 0.2s ease-in-out;
@@ -91,6 +92,7 @@ const Body = styled.div`
 
       & .Container1 {
         margin: 2rem;
+        margin-bottom: 0;
       }
 
       & .Container2 {
