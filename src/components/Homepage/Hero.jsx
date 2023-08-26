@@ -29,8 +29,8 @@ const Body = styled.div`
     border-radius: 2em;
     backdrop-filter: blur(25px);
     background: rgba(0, 0, 0, 0.4);
-    padding: 2em;
-    margin: 1em;
+    padding: 2rem;
+    margin: 1rem;
   }
 
   & .Title {

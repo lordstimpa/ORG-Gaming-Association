@@ -143,7 +143,7 @@ const Body = styled.div`
     & .HamburgerIcon {
       padding: 0.3em;
       color: #444444;
-      background: #00d1cd;
+      background: #f30067;
       border-radius: 50%;
       font-size: 2em;
       transition: color 0.2s ease-in-out;

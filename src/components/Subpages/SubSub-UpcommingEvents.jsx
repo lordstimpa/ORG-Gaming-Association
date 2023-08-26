@@ -41,8 +41,9 @@ const PastEvents = () => {
           >
             <div className="TextContainer">
               <h2>{event.name}</h2>
-              <p>{event.start_date}</p>
-              <p>{event.start_time}</p>
+              <p>
+                {event.start_date} - {event.start_time}
+              </p>
             </div>
             <img src={event.cover_source} alt="Event Cover" />
           </Link>

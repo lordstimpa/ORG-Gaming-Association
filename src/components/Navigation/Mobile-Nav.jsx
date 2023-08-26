@@ -17,7 +17,7 @@ const Body = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #00d1cd;
+    background-color: #f30067;
     border-radius: 1rem;
   }
 
@@ -27,25 +27,26 @@ const Body = styled.div`
 
   & .Link {
     font-weight: 600;
-    font-size: 1.5rem;
-    color: #00d1cd;
+    font-size: 1.2rem;
+    color: #f30067;
     text-decoration: none;
     width: fit-content;
     transition: color 0.2s ease-in-out;
 
     :hover {
-      color: #00d1cd;
+      color: #eaeaea;
     }
   }
 
   & .DropLink {
     color: #eaeaea;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
     transition: color 0.2s ease-in-out;
 
     :hover {
-      color: #00d1cd;
+      color: #f30067;
     }
   }
 
@@ -61,6 +62,7 @@ const Body = styled.div`
   & .GrandChild {
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
   }
 `;
 

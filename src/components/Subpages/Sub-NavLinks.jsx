@@ -20,7 +20,7 @@ const Body = styled.div`
     }
 
     & .LinkContainer {
-      min-width: fit-content;
+      width: fit-content;
 
       & .MainLinkContainer {
         display: flex;

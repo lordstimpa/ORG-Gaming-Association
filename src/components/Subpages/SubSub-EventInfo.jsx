@@ -39,7 +39,7 @@ const EventInfo = () => {
         {eventInfo && (
           <>
             <div className="EventHeader">
-              <h3>{eventInfo.name}</h3>
+              <h3 className="EventName">{eventInfo.name}</h3>
               <h3>
                 {eventInfo.start_date} - {eventInfo.start_time}
               </h3>

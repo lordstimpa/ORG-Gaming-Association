@@ -135,54 +135,57 @@ const Body = styled.div`
     }
 
     & .EventContainer {
+      width: 640px;
       position: relative;
       display: flex;
+      align-self: center;
       flex-direction: column;
       margin: 1rem;
       text-align: center;
       border-radius: 2rem;
       border: 3px solid #f30067;
       overflow: hidden;
-      transition: all 0.2s ease-in-out;
+      transition: 0.2s ease-in-out;
 
       & .TextContainer {
         position: absolute;
+        width: inherit;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        padding: 1rem 0;
+        backdrop-filter: blur(15px);
+        background: rgba(0, 0, 0, 0.4);
         z-index: 1;
 
         & h2 {
           color: #f30067;
           text-shadow: 1px 1px #eaeaea;
-          font-size: 3rem;
+          font-size: 2rem;
         }
 
         & p {
           color: #eaeaea;
-          font-size: 1.5rem;
+          margin-top: 1rem;
         }
-      }
-
-      & img {
-        filter: blur(5px);
-        transition: all 0.2s ease-in-out;
       }
 
       :hover {
         cursor: pointer;
         transform: scale(1.02);
         box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 45px;
-
-        & img {
-          filter: blur(0px);
-        }
       }
     }
   }
 
   @media only screen and (max-width: 1280px) {
     grid-template-columns: 1rem auto 70% auto 1rem;
+
+    & .Title {
+      & h1 {
+        letter-spacing: normal;
+      }
+    }
 
     & .Info {
       grid-column: 3 / 5;
@@ -203,6 +206,21 @@ const Body = styled.div`
           margin: 0 0 2rem 0;
         }
       }
+
+      & .EventContainer {
+        width: 77svw;
+        margin: 1rem 0;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 720px) {
+    & .Title {
+      padding: 1rem 0 1rem 0;
+      & h1 {
+        letter-spacing: normal;
+        font-size: 9vw;
+      }
     }
   }
 
@@ -211,6 +229,20 @@ const Body = styled.div`
       & .CardContainer {
         & .Card {
           width: 100%;
+        }
+      }
+
+      & .Medlem {
+        & a {
+          padding: 0.5rem 1rem;
+        }
+      }
+
+      & .EventHeader {
+        flex-direction: column;
+
+        & .EventName {
+          margin-bottom: 1rem;
         }
       }
     }
